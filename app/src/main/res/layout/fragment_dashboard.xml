@@ -10,8 +10,18 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:contentDescription="a"
+        android:padding="8dp"
         tools:listitem="@layout/item_gallery" />
+
+    <Button
+        android:id="@+id/addPhotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+
+        android:layout_margin="16dp"
+        android:text="리뷰 쓰기"
+        android:textColor="@android:color/white" /> <!-- 오른쪽 아래 정렬 -->
 
 </FrameLayout>

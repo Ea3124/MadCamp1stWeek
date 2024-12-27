@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class GalleryAdapter(
-    private val imageUrls: List<String>,
-    private val descriptions: List<String>,
+    private val imageUrls: MutableList<String>, // MutableList로 설정
+    private val descriptions: MutableList<String>,
     private val onItemClick: (String, String) -> Unit
 ) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
@@ -26,7 +26,7 @@ class GalleryAdapter(
     override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
         Glide.with(holder.imageView.context)
             .load(imageUrls[position])
-            .transform(RoundedCorners(50))
+            .transform(RoundedCorners(24))
             .into(holder.imageView)
 
         holder.itemView.setOnClickListener {
@@ -35,4 +35,10 @@ class GalleryAdapter(
     }
 
     override fun getItemCount(): Int = imageUrls.size
+
+    fun addImage(imageUrl: String, description: String) {
+        imageUrls.add(imageUrl)
+        descriptions.add(description)
+        notifyItemInserted(imageUrls.size - 1)
+    }
 }
