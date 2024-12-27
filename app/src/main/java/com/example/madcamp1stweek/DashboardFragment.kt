@@ -17,13 +17,57 @@ class DashboardFragment : Fragment() {
     private lateinit var adapter: GalleryAdapter
     private val imageUrls = mutableListOf(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s", // 기본 이미지 URL
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s"
+        "https://img2.quasarzone.com/editor/2023/02/06/2d1bd3940e248b54ef841a3b0b4453bc.jpg",
+        "https://image.fmkorea.com/files/attach/new3/20230901/486616/4513918673/6136156558/0798c45a389dd8bc58302c3a932d1919.jpg",
+        "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
+        "https://daedamo.com/new/data/file/photo2/2040939026_vAeDR4aC_2ffb199a868919a461e1c0645845cdf91551710f.jpg",
+        "https://daedamo.com/new/data/file/photo2/2041913824_dqOgyhvB_04eb872e3c2a3aae901a4ed2178ab03cef55f0e8.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s"
+
     )
     private val descriptions = mutableListOf(
         "기본 사진 1",
         "기본 사진 2",
-        "기본 사진 3"
+        "기본 사진 3",
+        "기본 사진 4",
+        "기본 사진 5",
+        "기본 사진 6",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu",
+        "siuuuu"
+
     )
 
     override fun onCreateView(
@@ -48,7 +92,7 @@ class DashboardFragment : Fragment() {
         addPhotoButton.setOnClickListener {
             openGallery()
         }
-
+        recyclerView.smoothScrollToPosition(10)
         return view
     }
 

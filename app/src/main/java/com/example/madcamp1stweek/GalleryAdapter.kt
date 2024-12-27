@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
+
+
 class GalleryAdapter(
     private val imageUrls: MutableList<String>, // MutableList로 설정
     private val descriptions: MutableList<String>,
@@ -26,8 +28,8 @@ class GalleryAdapter(
     override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
         Glide.with(holder.imageView.context)
             .load(imageUrls[position])
-            .transform(RoundedCorners(24))
             .into(holder.imageView)
+
 
         holder.itemView.setOnClickListener {
             onItemClick(imageUrls[position], descriptions[position])
