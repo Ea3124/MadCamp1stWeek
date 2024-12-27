@@ -13,22 +13,30 @@
             android:layout_weight="2"
             android:scaleType="centerCrop"
             android:contentDescription="hi" />
-
-        <TextView
-            android:id="@+id/photoDescription"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="사진 설명"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center" />
+            android:padding="8dp"
+            android:background="@drawable/rounded_background">
+
+            <TextView
+                android:id="@+id/photoDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="사진 설명"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </FrameLayout>
 
         <Button
             android:id="@+id/closeButton"
-            android:layout_width="match_parent"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_gravity="center"
             android:text="닫기" />
     </LinearLayout>
 </layout>

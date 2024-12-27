@@ -49,7 +49,7 @@ class DashboardFragment : Fragment() {
         "기본 사진 4",
         "기본 사진 5",
         "기본 사진 6",
-        "siuuuu",
+        "siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
         "siuuuu",
         "siuuuu",
         "siuuuu",
