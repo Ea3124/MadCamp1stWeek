@@ -3,13 +3,16 @@ package com.example.madcamp1stweek
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class HairShopAdapter(private val shopList: List<HairShop>) : RecyclerView.Adapter<HairShopAdapter.HairShopViewHolder>() {
 
     // ViewHolder 클래스
     class HairShopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView: ImageView = itemView.findViewById(R.id.imageViewHairShop)
         val textViewName: TextView = itemView.findViewById(R.id.textViewName)
         val textViewPhone: TextView = itemView.findViewById(R.id.textViewPhone)
     }
@@ -25,7 +28,11 @@ class HairShopAdapter(private val shopList: List<HairShop>) : RecyclerView.Adapt
     override fun onBindViewHolder(holder: HairShopViewHolder, position: Int) {
         val shop = shopList[position]
         holder.textViewName.text = shop.name
-        holder.textViewPhone.text = shop.phone
+        holder.textViewPhone.text = shop.phoneNumber
+
+        Glide.with(holder.itemView.context)
+            .load(shop.imageResId)
+            .into(holder.imageView)
     }
 
     // 아이템의 총 개수 반환

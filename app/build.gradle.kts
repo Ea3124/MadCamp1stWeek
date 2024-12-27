@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.fragment:fragment-ktx:1.5.5")
     implementation("androidx.core:core-ktx:1.13.1")
