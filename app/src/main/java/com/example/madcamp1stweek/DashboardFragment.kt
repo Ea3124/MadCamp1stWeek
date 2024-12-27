@@ -18,14 +18,14 @@ class DashboardFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val imageUrls = listOf(
-            "https://via.placeholder.com/150",
-            "https://via.placeholder.com/200",
-            "https://via.placeholder.com/250"
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s"
         )
         val descriptions = listOf(
-            "사진 1 설명",
-            "사진 2 설명",
-            "사진 3 설명"
+            "사장님이 친절하고 머리가 맛있어요",
+            "사장님이 친절하고 머리가 맛있어요",
+            "사장님이 친절하고 머리가 맛있어요"
         )
 
         recyclerView.layoutManager = GridLayoutManager(context, 3,RecyclerView.VERTICAL, false) // 3열 그리드 레이아웃

@@ -9,9 +9,10 @@
         <ImageView
             android:id="@+id/photoImageView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:scaleType="centerCrop"
-            android:contentDescription="uuu" />
+            android:contentDescription="hi" />
 
         <TextView
             android:id="@+id/photoDescription"
@@ -20,6 +21,7 @@
             android:layout_marginTop="8dp"
             android:text="사진 설명"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:gravity="center" />
 
         <Button

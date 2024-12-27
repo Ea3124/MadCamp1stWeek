@@ -36,7 +36,16 @@ class PhotoDialogFragment : DialogFragment() {
 
         return binding.root
     }
-
+    override fun onStart() {
+        super.onStart()
+        // 다이얼로그 크기 설정
+        val dialog = dialog ?: return
+        // 다이얼로그 크기 설정 (세로로 긴 직사각형)
+        val width = resources.displayMetrics.widthPixels * 0.8 // 화면 너비의 80%
+        val height = resources.displayMetrics.heightPixels * 0.6 // 화면 높이의 60%
+        dialog.window?.setLayout(width.toInt(), height.toInt()) // 직사각형 설정
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent) // 배경 투명 설정 (옵션)
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
