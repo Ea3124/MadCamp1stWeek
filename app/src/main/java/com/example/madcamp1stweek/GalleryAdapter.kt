@@ -7,7 +7,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class GalleryAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
+class GalleryAdapter(
+    private val imageUrls: List<String>,
+    private val descriptions: List<String>,
+    private val onItemClick: (String, String) -> Unit
+) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
     class GalleryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.galleryImageView)
@@ -22,6 +26,10 @@ class GalleryAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter
         Glide.with(holder.imageView.context)
             .load(imageUrls[position])
             .into(holder.imageView)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(imageUrls[position], descriptions[position])
+        }
     }
 
     override fun getItemCount(): Int = imageUrls.size
