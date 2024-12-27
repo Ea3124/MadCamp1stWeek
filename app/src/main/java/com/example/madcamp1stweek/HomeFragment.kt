@@ -1,5 +1,7 @@
 package com.example.madcamp1stweek
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +15,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerViewShops: RecyclerView
     private lateinit var shopAdapter: HairShopAdapter
     private lateinit var shopList: List<HairShop>
+    private lateinit var sharedPreferences: SharedPreferences
+    private val likedShopsKey = "liked_shops"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,14 +28,27 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // SharedPreferences 참조
+        sharedPreferences = requireContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+        val likedShops = sharedPreferences.getStringSet(likedShopsKey, mutableSetOf())
+
         // RecyclerView 참조
         recyclerViewShops = view.findViewById(R.id.recyclerViewShops)
 
         // 데이터 초기화
         shopList = generateDummyShops()
 
+        // SharedPreferences에서 불러온 즐겨찾기 목록을 기반으로 myshop 설정
+        for (shop in shopList) {
+            if (likedShops?.contains(shop.phoneNumber) == true) {
+                shop.myshop = true
+            } else {
+                shop.myshop = false
+            }
+        }
+
         // Adapter 설정
-        shopAdapter = HairShopAdapter(shopList)
+        shopAdapter = HairShopAdapter(shopList, requireContext())
 
         // LayoutManager 설정 (LinearLayoutManager 사용)
         recyclerViewShops.layoutManager = LinearLayoutManager(requireContext())

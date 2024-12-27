@@ -53,6 +53,16 @@
             android:clickable="true"
             android:focusable="true" />
 
+        <!-- 좋아요(하트) 아이콘 추가 -->
+        <ImageView
+            android:id="@+id/imageViewHeart"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart_empty"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
