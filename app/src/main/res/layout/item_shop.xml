@@ -44,6 +44,15 @@
 
         </LinearLayout>
 
+        <!-- 전화 아이콘 추가 -->
+        <ImageView
+            android:id="@+id/imageViewCall"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_call"
+            android:clickable="true"
+            android:focusable="true" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

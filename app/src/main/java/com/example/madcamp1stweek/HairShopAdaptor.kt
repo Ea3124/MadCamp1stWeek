@@ -1,5 +1,7 @@
 package com.example.madcamp1stweek
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ class HairShopAdapter(private val shopList: List<HairShop>) : RecyclerView.Adapt
         val imageView: ImageView = itemView.findViewById(R.id.imageViewHairShop)
         val textViewName: TextView = itemView.findViewById(R.id.textViewName)
         val textViewPhone: TextView = itemView.findViewById(R.id.textViewPhone)
+        val imageViewCall: ImageView = itemView.findViewById(R.id.imageViewCall)
     }
 
     // 아이템 레이아웃을 생성
@@ -33,6 +36,13 @@ class HairShopAdapter(private val shopList: List<HairShop>) : RecyclerView.Adapt
         Glide.with(holder.itemView.context)
             .load(shop.imageResId)
             .into(holder.imageView)
+
+        // 전화 아이콘 클릭 리스너 설정
+        holder.imageViewCall.setOnClickListener {
+            val dialIntent = Intent(Intent.ACTION_DIAL)
+            dialIntent.data = Uri.parse("tel:${shop.phoneNumber}")
+            holder.itemView.context.startActivity(dialIntent)
+        }
     }
 
     // 아이템의 총 개수 반환
