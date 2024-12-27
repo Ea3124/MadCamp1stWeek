@@ -2,7 +2,7 @@
     <style name="RoundedBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
         <!-- 상단 모서리 둥글게 설정 -->
         <item name="shapeAppearanceOverlay">@style/RoundedShapeAppearance</item>
-        <color name="gray">#B0BEC5</color> <!-- 회색 -->
+<!--        <color name="gray">#B0BEC5</color> &lt;!&ndash; 회색 &ndash;&gt;-->
     </style>
 
     <style name="RoundedShapeAppearance" parent="">
