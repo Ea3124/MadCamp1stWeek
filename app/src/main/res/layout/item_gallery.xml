@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#F3E6C7">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +47,7 @@
                 android:padding="4dp"
                 android:background="@drawable/rating_background"
                 android:text="⭐ 4.5"
-                android:textSize="14sp"
+                android:textSize="10sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </FrameLayout>
