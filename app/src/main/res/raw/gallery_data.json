@@ -1,0 +1,30 @@
+[
+  {
+    "index": 1,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s",
+    "description": "직원들이 정말 친절했고, 원하는 스타일을 정확히 만들어 주셨어요. 샴푸 서비스도 아주 만족스러웠고, 시설도 깔끔했습니다.",
+    "rating": 4.5,
+    "hairshopName": "야도헤어 봉명점"
+  },
+  {
+    "index": 2,
+    "imageUrl": "https://img2.quasarzone.com/editor/2023/02/06/2d1bd3940e248b54ef841a3b0b4453bc.jpg",
+    "description": "가격 대비 만족스러운 결과였어요. 조금 더 꼼꼼하게 설명해 주셨으면 좋았을 것 같아요. 그래도 전반적으로 만족스러운 방문이었습니다.",
+    "rating": 3.0,
+    "hairshopName": "니니티헤어 궁동점"
+  },
+  {
+    "index": 3,
+    "imageUrl": "https://image.fmkorea.com/files/attach/new3/20230901/486616/4513918673/6136156558/0798c45a389dd8bc58302c3a932d1919.jpg",
+    "description": "머리 커트 후 주변에서 칭찬이 끊이지 않아요. 헤어 디자이너분이 스타일링 팁도 알려주셔서 정말 유용했어요. 다음에도 꼭 방문하고 싶습니다!",
+    "rating": 4.0,
+    "hairshopName": "프랫헤어"
+  },
+  {
+    "index": 4,
+    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
+    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
+    "rating": 5.0,
+    "hairshopName": "피즈피헤어 봉명점"
+  }
+]

@@ -1,0 +1,35 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 미용실 이름 선택 Spinner -->
+    <Spinner
+        android:id="@+id/hairshopSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:background="@android:drawable/btn_dropdown" />
+
+    <!-- 사진 설명 입력 -->
+    <EditText
+        android:id="@+id/editDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="솔직하게 리뷰를 작성해주세요"
+        android:padding="12dp"
+        android:textSize="16sp" />
+
+    <!-- 별점 입력 -->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="1.0"
+        android:numStars="5"
+        android:rating="3"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

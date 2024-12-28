@@ -6,13 +6,27 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- 사진 이미지 -->
         <ImageView
             android:id="@+id/photoImageView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="400dp"
+            android:layout_height="450dp"
             android:layout_weight="2"
             android:scaleType="centerCrop"
-            android:contentDescription="hi" />
+            android:contentDescription="사진 이미지" />
+
+        <!-- 미용실 이름 -->
+        <TextView
+            android:id="@+id/hairshopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="미용실 이름"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <!-- 사진 설명 -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,17 +38,18 @@
                 android:id="@+id/photoDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:text="사진 설명"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center" />
+                android:gravity="start"/> <!-- 왼쪽 정렬 -->
+
         </FrameLayout>
 
+        <!-- 닫기 버튼 -->
         <Button
             android:id="@+id/closeButton"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_gravity="center"
             android:text="닫기" />

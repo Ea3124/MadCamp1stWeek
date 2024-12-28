@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-
-
 
 class GalleryAdapter(
-    private val imageUrls: MutableList<String>, // MutableList로 설정
-    private val descriptions: MutableList<String>,
-    private val onItemClick: (String, String) -> Unit
+    private val galleryItems: MutableList<GalleryItem>,
+    private val onItemClick: (String, String, Float, String) -> Unit
 ) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
     class GalleryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.galleryImageView)
+        val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
+        val ratingTextView: TextView = itemView.findViewById(R.id.ratingTextView)
+        val hairshopNameTextView: TextView = itemView.findViewById(R.id.hairshopNameTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
@@ -26,21 +26,23 @@ class GalleryAdapter(
     }
 
     override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
+        val item = galleryItems[position]
+        holder.hairshopNameTextView.text = item.hairshopName
+        holder.descriptionTextView.text = item.description
+        holder.ratingTextView.text = "⭐ ${item.rating}"
         Glide.with(holder.imageView.context)
-            .load(imageUrls[position])
+            .load(item.imageUrl)
             .into(holder.imageView)
 
-
         holder.itemView.setOnClickListener {
-            onItemClick(imageUrls[position], descriptions[position])
+            onItemClick(item.imageUrl, item.description, item.rating, item.hairshopName)
         }
     }
 
-    override fun getItemCount(): Int = imageUrls.size
+    override fun getItemCount(): Int = galleryItems.size
 
-    fun addImage(imageUrl: String, description: String) {
-        imageUrls.add(imageUrl)
-        descriptions.add(description)
-        notifyItemInserted(imageUrls.size - 1)
+    fun addImage(item: GalleryItem) {
+        galleryItems.add(0, item)
+        notifyItemInserted(0)
     }
 }

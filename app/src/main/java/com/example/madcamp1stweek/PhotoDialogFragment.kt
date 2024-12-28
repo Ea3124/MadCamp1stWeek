@@ -1,6 +1,5 @@
 package com.example.madcamp1stweek
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,14 +19,18 @@ class PhotoDialogFragment : DialogFragment() {
     ): View {
         _binding = FragmentPhotoDialogBinding.inflate(inflater, container, false)
 
-        // 이미지와 설명 설정
-        val photoUrl = arguments?.getString("photoUrl")
-        val description = arguments?.getString("description")
+        // 전달받은 데이터 설정
+        val photoUrl = arguments?.getString(ARG_PHOTO_URL)
+        val description = arguments?.getString(ARG_DESCRIPTION)
+        val hairshopName = arguments?.getString(ARG_HAIRSHOP_NAME)
 
         photoUrl?.let {
-            Glide.with(this).load(it).into(binding.photoImageView)
+            Glide.with(this)
+                .load(it)
+                .into(binding.photoImageView)
         }
         binding.photoDescription.text = description
+        binding.hairshopName.text = hairshopName
 
         // 닫기 버튼
         binding.closeButton.setOnClickListener {
@@ -36,27 +39,23 @@ class PhotoDialogFragment : DialogFragment() {
 
         return binding.root
     }
-    override fun onStart() {
-        super.onStart()
-        // 다이얼로그 크기 설정
-        val dialog = dialog ?: return
-        // 다이얼로그 크기 설정 (세로로 긴 직사각형)
-        val width = resources.displayMetrics.widthPixels * 0.8 // 화면 너비의 80%
-        val height = resources.displayMetrics.heightPixels * 0.6 // 화면 높이의 60%
-        dialog.window?.setLayout(width.toInt(), height.toInt()) // 직사각형 설정
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent) // 배경 투명 설정 (옵션)
-    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     companion object {
-        fun newInstance(photoUrl: String, description: String): PhotoDialogFragment {
+        private const val ARG_PHOTO_URL = "photoUrl"
+        private const val ARG_DESCRIPTION = "description"
+        private const val ARG_HAIRSHOP_NAME = "hairshopName"
+
+        fun newInstance(photoUrl: String, description: String, hairshopName: String): PhotoDialogFragment {
             val fragment = PhotoDialogFragment()
             val args = Bundle()
-            args.putString("photoUrl", photoUrl)
-            args.putString("description", description)
+            args.putString(ARG_PHOTO_URL, photoUrl)
+            args.putString(ARG_DESCRIPTION, description)
+            args.putString(ARG_HAIRSHOP_NAME, hairshopName)
             fragment.arguments = args
             return fragment
         }
