@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
+            android:backgroundTint="#F3E6C7"
             android:background="@drawable/rounded_background">
 
             <TextView
@@ -52,6 +53,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_gravity="center"
+            android:backgroundTint="@color/deep_yellow"
             android:text="닫기" />
     </LinearLayout>
 </layout>
