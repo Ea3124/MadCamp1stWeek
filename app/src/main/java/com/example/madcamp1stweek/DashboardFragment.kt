@@ -11,7 +11,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.madcamp1stweek.models.GalleryItem
+//import com.example.madcamp1stweek.models.GalleryItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader
@@ -19,9 +19,8 @@ import java.io.InputStreamReader
 class DashboardFragment : Fragment() {
 
     private lateinit var adapter: GalleryAdapter
-    private val imageUrls = mutableListOf<String>()
-    private val descriptions = mutableListOf<String>()
-    private val ratings = mutableListOf<Float>()  // 별점 리스트 추가
+    private val galleryItems = mutableListOf<GalleryItem>()
+    private lateinit var hairshopList: List<HairShop>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,19 +31,19 @@ class DashboardFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
 
-        if (imageUrls.isEmpty()) { // 데이터가 비어 있을 때만 로드
-            val galleryData = loadGalleryData()
-            imageUrls.addAll(galleryData.map { it.imageUrl })
-            descriptions.addAll(galleryData.map { it.description })
-            ratings.addAll(galleryData.map { it.rating })
+        hairshopList = loadHairshopData()
+
+        if (galleryItems.isEmpty()) {
+            galleryItems.addAll(loadGalleryData())
         }
 
-        adapter = GalleryAdapter(imageUrls, descriptions, ratings) { photoUrl, description, rating ->
-            PhotoDialogFragment.newInstance(photoUrl, description).show(
+        adapter = GalleryAdapter(galleryItems) { photoUrl, description, rating, hairshopName ->
+            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName).show(
                 parentFragmentManager,
                 "PhotoDialog"
             )
         }
+
         recyclerView.adapter = adapter
 
         val addPhotoButton = view.findViewById<Button>(R.id.addPhotoButton)
@@ -55,11 +54,17 @@ class DashboardFragment : Fragment() {
         return view
     }
 
-
     private fun loadGalleryData(): List<GalleryItem> {
         val inputStream = resources.openRawResource(R.raw.gallery_data)
         val reader = InputStreamReader(inputStream)
         val type = object : TypeToken<List<GalleryItem>>() {}.type
+        return Gson().fromJson(reader, type)
+    }
+
+    private fun loadHairshopData(): List<HairShop> {
+        val inputStream = resources.openRawResource(R.raw.hairshop_data)
+        val reader = InputStreamReader(inputStream)
+        val type = object : TypeToken<List<HairShop>>() {}.type
         return Gson().fromJson(reader, type)
     }
 
@@ -85,10 +90,16 @@ class DashboardFragment : Fragment() {
         dialog.show(parentFragmentManager, "AddDescriptionDialogFragment")
     }
 
-    fun addImageWithDescription(imageUrl: String, description: String, rating: Float) {
-        imageUrls.add(0, imageUrl)
-        descriptions.add(0, description)
-        ratings.add(0, rating)  // 별점 추가
+    fun addImageWithDescription(imageUrl: String, description: String, rating: Float, hairshopName: String) {
+        val newItem = GalleryItem(
+            index = galleryItems.size + 1,
+            imageUrl = imageUrl,
+            description = description,
+            rating = rating,
+            hairshopName = hairshopName
+        )
+
+        galleryItems.add(0, newItem)
         adapter.notifyItemInserted(0)
         view?.findViewById<RecyclerView>(R.id.recyclerView)?.smoothScrollToPosition(0)
     }

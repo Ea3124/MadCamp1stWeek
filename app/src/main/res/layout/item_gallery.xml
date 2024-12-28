@@ -1,30 +1,41 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="110dp"
-    android:layout_height="150dp"
-    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <!-- FrameLayout으로 이미지와 별점 겹치기 -->
+        <!-- 미용실 이름 -->
+        <TextView
+            android:id="@+id/hairshopNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="미용실 이름"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <!-- 이미지 및 별점 -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="100dp">
 
-            <!-- 갤러리 이미지 -->
             <ImageView
                 android:id="@+id/galleryImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
 
-            <!-- 사진 안 우측 상단 별점 -->
             <TextView
                 android:id="@+id/ratingTextView"
                 android:layout_width="wrap_content"
@@ -44,12 +55,12 @@
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:padding="4dp"
-            android:textSize="14sp"
+            android:gravity="center"
             android:text="사진 설명"
             android:textColor="@android:color/black"
-            android:gravity="center" />
-
+            android:textSize="8sp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
