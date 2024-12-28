@@ -11,64 +11,17 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.madcamp1stweek.models.GalleryItem
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.InputStreamReader
 
 class DashboardFragment : Fragment() {
 
     private lateinit var adapter: GalleryAdapter
-    private val imageUrls = mutableListOf(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s", // 기본 이미지 URL
-        "https://img2.quasarzone.com/editor/2023/02/06/2d1bd3940e248b54ef841a3b0b4453bc.jpg",
-        "https://image.fmkorea.com/files/attach/new3/20230901/486616/4513918673/6136156558/0798c45a389dd8bc58302c3a932d1919.jpg",
-        "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-        "https://daedamo.com/new/data/file/photo2/2040939026_vAeDR4aC_2ffb199a868919a461e1c0645845cdf91551710f.jpg",
-        "https://daedamo.com/new/data/file/photo2/2041913824_dqOgyhvB_04eb872e3c2a3aae901a4ed2178ab03cef55f0e8.jpg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDdUMad0cZhy9F6ePzSTmLcs92PcwVZYCimg&s"
-
-    )
-    private val descriptions = mutableListOf(
-        "기본 사진 1",
-        "기본 사진 2",
-        "기본 사진 3",
-        "기본 사진 4",
-        "기본 사진 5",
-        "기본 사진 6",
-        "siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu",
-        "siuuuu"
-
-    )
+    private val imageUrls = mutableListOf<String>()
+    private val descriptions = mutableListOf<String>()
+    private val ratings = mutableListOf<Float>()  // 별점 리스트 추가
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,7 +32,14 @@ class DashboardFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
 
-        adapter = GalleryAdapter(imageUrls, descriptions) { photoUrl, description ->
+        if (imageUrls.isEmpty()) { // 데이터가 비어 있을 때만 로드
+            val galleryData = loadGalleryData()
+            imageUrls.addAll(galleryData.map { it.imageUrl })
+            descriptions.addAll(galleryData.map { it.description })
+            ratings.addAll(galleryData.map { it.rating })
+        }
+
+        adapter = GalleryAdapter(imageUrls, descriptions, ratings) { photoUrl, description, rating ->
             PhotoDialogFragment.newInstance(photoUrl, description).show(
                 parentFragmentManager,
                 "PhotoDialog"
@@ -87,13 +47,20 @@ class DashboardFragment : Fragment() {
         }
         recyclerView.adapter = adapter
 
-        // 추가 버튼 클릭 이벤트
         val addPhotoButton = view.findViewById<Button>(R.id.addPhotoButton)
         addPhotoButton.setOnClickListener {
             openGallery()
         }
-        recyclerView.smoothScrollToPosition(10)
+
         return view
+    }
+
+
+    private fun loadGalleryData(): List<GalleryItem> {
+        val inputStream = resources.openRawResource(R.raw.gallery_data)
+        val reader = InputStreamReader(inputStream)
+        val type = object : TypeToken<List<GalleryItem>>() {}.type
+        return Gson().fromJson(reader, type)
     }
 
     private fun openGallery() {
@@ -118,8 +85,12 @@ class DashboardFragment : Fragment() {
         dialog.show(parentFragmentManager, "AddDescriptionDialogFragment")
     }
 
-    fun addImageWithDescription(imageUrl: String, description: String) {
-        adapter.addImage(imageUrl, description)
+    fun addImageWithDescription(imageUrl: String, description: String, rating: Float) {
+        imageUrls.add(0, imageUrl)
+        descriptions.add(0, description)
+        ratings.add(0, rating)  // 별점 추가
+        adapter.notifyItemInserted(0)
+        view?.findViewById<RecyclerView>(R.id.recyclerView)?.smoothScrollToPosition(0)
     }
 
     companion object {

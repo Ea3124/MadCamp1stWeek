@@ -1,0 +1,26 @@
+[
+  {
+    "index": 1,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYF_qQIKcZt7QGA4IwBaFMglq3GmIACHwCgg&s",
+    "description": "기본 사진 1",
+    "rating": 4.5
+  },
+  {
+    "index": 2,
+    "imageUrl": "https://img2.quasarzone.com/editor/2023/02/06/2d1bd3940e248b54ef841a3b0b4453bc.jpg",
+    "description": "기본 사진 2",
+    "rating": 3.0
+  },
+  {
+    "index": 3,
+    "imageUrl": "https://image.fmkorea.com/files/attach/new3/20230901/486616/4513918673/6136156558/0798c45a389dd8bc58302c3a932d1919.jpg",
+    "description": "기본 사진 3",
+    "rating": 4.0
+  },
+  {
+    "index": 4,
+    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
+    "description": "기본 사진 4",
+    "rating": 5.0
+  }
+]

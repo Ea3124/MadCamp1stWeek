@@ -1,16 +1,55 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="110dp"
+    android:layout_height="150dp"
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp">
 
-    <ImageView
-        android:id="@+id/galleryImageView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:orientation="vertical">
+
+        <!-- FrameLayout으로 이미지와 별점 겹치기 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <!-- 갤러리 이미지 -->
+            <ImageView
+                android:id="@+id/galleryImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <!-- 사진 안 우측 상단 별점 -->
+            <TextView
+                android:id="@+id/ratingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:background="@drawable/rating_background"
+                android:text="⭐ 4.5"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- 사진 설명 -->
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:text="사진 설명"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
-    <!--android:background="@android:color/darker_gray" />-->
