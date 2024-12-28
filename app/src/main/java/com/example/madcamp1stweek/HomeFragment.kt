@@ -9,14 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.SearchView
 
 class HomeFragment : Fragment() {
 
     private lateinit var recyclerViewShops: RecyclerView
     private lateinit var shopAdapter: HairShopAdapter
-    private lateinit var shopList: List<HairShop>
+    private lateinit var shopList: MutableList<HairShop>
     private lateinit var sharedPreferences: SharedPreferences
     private val likedShopsKey = "liked_shops"
+    private lateinit var searchView: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +29,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Reference SearchView
+        searchView = view.findViewById(R.id.searchView)
 
         // SharedPreferences 참조
         sharedPreferences = requireContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
@@ -56,11 +61,36 @@ class HomeFragment : Fragment() {
         // Adapter 연결
         recyclerViewShops.adapter = shopAdapter
         // Inflate the layout for this fragment
+
+        // Set up SearchView listener
+        setupSearchView()
     }
 
+    private fun setupSearchView() {
+        // Enable submitting queries
+        searchView.isSubmitButtonEnabled = true
+
+        // Set listeners for query text changes
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Optional: Handle query submission
+                shopAdapter.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Handle text changes in the search view
+                shopAdapter.filter.filter(newText)
+                return false
+            }
+        })
+    }
+
+
+
     // 더미 데이터 생성 함수
-    private fun generateDummyShops(): List<HairShop> {
-        return listOf(
+    private fun generateDummyShops(): MutableList<HairShop> {
+        return mutableListOf(
             HairShop("킷키헤어 대전봉명점", "0507-1427-0953", R.drawable.kitk_hair_logo),
             HairShop("LSJ뷰티헤어 유성본점", "0507-1435-2330", R.drawable.lsj_logo),
             HairShop("야도헤어 봉명점", "0507-1407-8963", R.drawable.yaddo_logo),

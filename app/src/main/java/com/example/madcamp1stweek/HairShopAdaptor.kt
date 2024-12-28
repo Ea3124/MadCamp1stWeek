@@ -11,11 +11,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.widget.Filter
+import android.widget.Filterable
 
 class HairShopAdapter(
-    private val shopList: List<HairShop>,
+    private var shopList: MutableList<HairShop>,
     private val context: Context
-) : RecyclerView.Adapter<HairShopAdapter.HairShopViewHolder>() {
+) : RecyclerView.Adapter<HairShopAdapter.HairShopViewHolder>(), Filterable {
+
+    private var filteredShopList: MutableList<HairShop> = shopList
 
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
@@ -41,7 +45,8 @@ class HairShopAdapter(
 
     // 데이터와 뷰를 바인딩
     override fun onBindViewHolder(holder: HairShopViewHolder, position: Int) {
-        val shop = shopList[position]
+//        val shop = shopList[position]
+        val shop = filteredShopList[position] // filteredShopList 사용
         holder.textViewName.text = shop.name
         holder.textViewPhone.text = shop.phoneNumber
 
@@ -87,6 +92,38 @@ class HairShopAdapter(
         }
     }
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val query = constraint?.toString()?.trim()?.lowercase() ?: ""
+                val results = if (query.isEmpty()) {
+                    shopList
+                } else {
+                    shopList.filter {
+                        it.name.lowercase().contains(query) ||
+                                it.phoneNumber.contains(query)
+                    }
+                }
+
+                val filterResults = FilterResults()
+                filterResults.values = results
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredShopList = (results?.values as? List<HairShop>)?.toMutableList() ?: mutableListOf()
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+    fun updateShops(newShops: MutableList<HairShop>) {
+        shopList = newShops
+        filteredShopList = shopList
+        notifyDataSetChanged()
+    }
+
     // 아이템의 총 개수 반환
-    override fun getItemCount(): Int = shopList.size
+    override fun getItemCount(): Int = filteredShopList.size
 }

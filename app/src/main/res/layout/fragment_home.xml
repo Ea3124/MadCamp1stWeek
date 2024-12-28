@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-<!--    &lt;!&ndash; 홈 프래그먼트의 내용 &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="홈 화면"-->
-<!--        android:textSize="24sp"-->
-<!--        android:layout_gravity="center" />-->
+    <!-- 상단 바: 이미지와 검색창을 양쪽 끝으로 배치 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|end">
 
+        <ImageView
+            android:layout_width="88pt"
+            android:layout_height="27pt"
+            android:src="@drawable/myhair_down"
+            android:layout_marginLeft="-18dp"
+             />
 
+        <!-- Spacer: 이미지와 검색창 사이를 띄우기 위해 공간 추가 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:queryHint="검색..."
+            app:iconifiedByDefault="false"
+        />
+
+    </LinearLayout>
+
+    <!-- RecyclerView: 상단 바 아래에 배치 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewShops"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="8dp"/>
 
-</FrameLayout>
+</LinearLayout>
