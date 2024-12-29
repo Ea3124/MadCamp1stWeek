@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
+            android:backgroundTint="#F3E6C7"
             android:background="@drawable/rounded_background">
 
             <TextView
@@ -45,13 +46,32 @@
 
         </FrameLayout>
 
-        <!-- 닫기 버튼 -->
-        <Button
-            android:id="@+id/closeButton"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="닫기" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/closeButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="닫기" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="삭제" />
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="수정" />
+        </LinearLayout>
     </LinearLayout>
 </layout>

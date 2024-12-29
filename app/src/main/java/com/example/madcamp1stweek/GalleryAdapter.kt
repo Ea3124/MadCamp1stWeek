@@ -10,8 +10,9 @@ import com.bumptech.glide.Glide
 
 class GalleryAdapter(
     private val galleryItems: MutableList<GalleryItem>,
-    private val onItemClick: (String, String, Float, String) -> Unit
+    private val onItemClick: (String, String, Float, String, Int) -> Unit // index 추가
 ) : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
+
 
     class GalleryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.galleryImageView)
@@ -35,7 +36,8 @@ class GalleryAdapter(
             .into(holder.imageView)
 
         holder.itemView.setOnClickListener {
-            onItemClick(item.imageUrl, item.description, item.rating, item.hairshopName)
+            // index 추가
+            onItemClick(item.imageUrl, item.description, item.rating, item.hairshopName, item.index)
         }
     }
 

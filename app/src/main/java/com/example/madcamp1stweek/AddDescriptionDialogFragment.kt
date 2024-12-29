@@ -18,6 +18,8 @@ class AddDescriptionDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val imageUrl = arguments?.getString(ARG_IMAGE_URL)
+        val isEditing = arguments?.getBoolean(ARG_IS_EDITING) ?: false
+        val index = arguments?.getInt(ARG_INDEX) ?: -1
 
         val view: View = LayoutInflater.from(requireContext()).inflate(R.layout.add_description_dialog, null)
 
@@ -30,16 +32,45 @@ class AddDescriptionDialogFragment : DialogFragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
+        // 수정 모드일 경우 기존 데이터 설정
+        if (isEditing) {
+            val existingDescription = arguments?.getString(ARG_DESCRIPTION)
+            val existingRating = arguments?.getFloat(ARG_RATING) ?: 3.0f
+            val existingHairshopName = arguments?.getString(ARG_HAIRSHOP_NAME)
+
+            input.setText(existingDescription)
+            ratingBar.rating = existingRating
+            val selectedIndex = hairshopNames.indexOf(existingHairshopName)
+            if (selectedIndex >= 0) {
+                spinner.setSelection(selectedIndex)
+            }
+        }
+
         return AlertDialog.Builder(requireContext())
-            .setTitle("리뷰 쓰기")
+            .setTitle(if (isEditing) "리뷰 수정" else "리뷰 쓰기")
             .setView(view)
-            .setPositiveButton("추가") { _, _ ->
+            .setPositiveButton(if (isEditing) "수정" else "추가") { _, _ ->
                 val description = input.text.toString()
                 val rating = ratingBar.rating
                 val selectedHairshop = spinner.selectedItem.toString()
-                if (targetFragment is DashboardFragment && imageUrl != null) {
-                    (targetFragment as DashboardFragment).addImageWithDescription(imageUrl, description, rating, selectedHairshop)
+                if (isEditing) {
+                    // 수정 작업
+                    (targetFragment as DashboardFragment).updatePhoto(
+                        index = index,
+                        newDescription = description,
+                        newRating = rating,
+                        newHairshopName = selectedHairshop
+                    )
+                } else {
+                    // 추가 작업
+                    (targetFragment as DashboardFragment).addImageWithDescription(
+                        imageUrl = imageUrl ?: "",
+                        description = description,
+                        rating = rating,
+                        hairshopName = selectedHairshop
+                    )
                 }
+
             }
             .setNegativeButton("취소", null)
             .create()
@@ -54,11 +85,36 @@ class AddDescriptionDialogFragment : DialogFragment() {
 
     companion object {
         private const val ARG_IMAGE_URL = "imageUrl"
+        private const val ARG_IS_EDITING = "isEditing"
+        private const val ARG_INDEX = "index"
+        private const val ARG_DESCRIPTION = "description"
+        private const val ARG_RATING = "rating"
+        private const val ARG_HAIRSHOP_NAME = "hairshopName"
 
-        fun newInstance(imageUrl: String): AddDescriptionDialogFragment {
+        fun newInstance(
+            imageUrl: String,
+            isEditing: Boolean = false,
+            index: Int? = null,
+            description: String? = null,
+            rating: Float? = null,
+            hairshopName: String? = null
+        ): AddDescriptionDialogFragment {
             val fragment = AddDescriptionDialogFragment()
             val args = Bundle()
             args.putString(ARG_IMAGE_URL, imageUrl)
+            args.putBoolean(ARG_IS_EDITING, isEditing)
+            if (index != null) {
+                args.putInt(ARG_INDEX, index)
+            }
+            if (description != null) {
+                args.putString(ARG_DESCRIPTION, description)
+            }
+            if (rating != null) {
+                args.putFloat(ARG_RATING, rating)
+            }
+            if (hairshopName != null) {
+                args.putString(ARG_HAIRSHOP_NAME, hairshopName)
+            }
             fragment.arguments = args
             return fragment
         }
