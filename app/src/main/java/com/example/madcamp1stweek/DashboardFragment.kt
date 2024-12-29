@@ -128,6 +128,24 @@ class DashboardFragment : Fragment() {
             Log.e("DashboardFragment", "삭제할 아이템을 찾을 수 없습니다. Index: $indexToDelete")
         }
     }
+    fun editPhoto(indexToEdit: Int) {
+        Log.d("DashboardFragment", "editPhoto 호출됨. 수정 대상 Index: $indexToEdit")
+
+        val itemToEdit = galleryItems.find { it.index == indexToEdit }
+        if (itemToEdit != null) {
+            Log.d("DashboardFragment", "수정 대상 찾음: $itemToEdit")
+
+            // 수정 대화상자 열기 (예: 기존 데이터를 전달)
+            val dialog = AddDescriptionDialogFragment.newInstance(itemToEdit.imageUrl).apply {
+                setTargetFragment(this@DashboardFragment, 0)
+            }
+            dialog.show(parentFragmentManager, "EditDescriptionDialogFragment")
+        } else {
+            Log.e("DashboardFragment", "수정할 아이템을 찾을 수 없습니다. Index: $indexToEdit")
+        }
+    }
+
+
 
     companion object {
         private const val REQUEST_CODE_PICK_IMAGE = 1001

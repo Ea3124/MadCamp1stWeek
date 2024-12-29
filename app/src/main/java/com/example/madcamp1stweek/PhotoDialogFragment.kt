@@ -51,8 +51,23 @@ class PhotoDialogFragment : DialogFragment() {
             } else {
                 Log.e("PhotoDialogFragment", "삭제 요청 실패 - Index 또는 대상 프래그먼트가 없음.")
             }
-
         }
+        binding.editButton.setOnClickListener {
+            val targetFragment = targetFragment as? DashboardFragment
+            val indexToEdit = arguments?.getInt(ARG_INDEX) // 수정할 항목의 인덱스
+
+            Log.d("PhotoDialogFragment", "수정 버튼 클릭됨. Index: $indexToEdit")
+            Log.d("PhotoDialogFragment", "Target Fragment: $targetFragment")
+
+            if (indexToEdit != null && targetFragment != null) {
+                targetFragment.editPhoto(indexToEdit)
+                Log.d("PhotoDialogFragment", "DashboardFragment로 수정 요청")
+                dismiss() // 다이얼로그 닫기
+            } else {
+                Log.e("PhotoDialogFragment", "수정 요청 실패 - Index 또는 대상 프래그먼트가 설정되지 않음.")
+            }
+        }
+
 
         return binding.root
     }
