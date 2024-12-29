@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,12 +38,12 @@ class DashboardFragment : Fragment() {
             galleryItems.addAll(loadGalleryData())
         }
 
-        adapter = GalleryAdapter(galleryItems) { photoUrl, description, rating, hairshopName ->
-            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName).show(
-                parentFragmentManager,
-                "PhotoDialog"
-            )
+        adapter = GalleryAdapter(galleryItems) { photoUrl, description, rating, hairshopName, index ->
+            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName, index).apply {
+                setTargetFragment(this@DashboardFragment, 0)
+            }.show(parentFragmentManager, "PhotoDialog")
         }
+
 
         recyclerView.adapter = adapter
 
@@ -102,6 +103,30 @@ class DashboardFragment : Fragment() {
         galleryItems.add(0, newItem)
         adapter.notifyItemInserted(0)
         view?.findViewById<RecyclerView>(R.id.recyclerView)?.smoothScrollToPosition(0)
+    }
+
+
+    fun deletePhoto(indexToDelete: Int) {
+        Log.d("DashboardFragment", "deletePhoto 호출됨. 삭제 대상 Index: $indexToDelete")
+
+        // galleryItems에서 해당 인덱스를 가진 아이템 삭제
+        val itemToDelete = galleryItems.find { it.index == indexToDelete }
+        if (itemToDelete != null) {
+            Log.d("DashboardFragment", "삭제 대상 찾음: $itemToDelete")
+            galleryItems.remove(itemToDelete)
+
+            // 인덱스를 다시 설정
+            galleryItems.forEachIndexed { newIndex, item ->
+                item.index = newIndex + 1 // 인덱스는 1부터 시작
+                Log.d("DashboardFragment", "인덱스 재설정: ${item.index} - ${item.imageUrl}")
+            }
+
+            // 어댑터에 변경 알림
+            adapter.notifyDataSetChanged()
+            Log.d("DashboardFragment", "어댑터에 변경 사항 반영 완료.")
+        } else {
+            Log.e("DashboardFragment", "삭제할 아이템을 찾을 수 없습니다. Index: $indexToDelete")
+        }
     }
 
     companion object {
