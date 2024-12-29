@@ -128,6 +128,25 @@ class DashboardFragment : Fragment() {
             Log.e("DashboardFragment", "삭제할 아이템을 찾을 수 없습니다. Index: $indexToDelete")
         }
     }
+    fun updatePhoto(index: Int, newDescription: String, newRating: Float, newHairshopName: String) {
+        Log.d("DashboardFragment", "updatePhoto 호출됨. 수정 대상 Index: $index")
+
+        val itemToUpdate = galleryItems.find { it.index == index }
+        if (itemToUpdate != null) {
+            Log.d("DashboardFragment", "수정 대상 찾음: $itemToUpdate")
+
+            itemToUpdate.description = newDescription
+            itemToUpdate.rating = newRating
+            itemToUpdate.hairshopName = newHairshopName
+
+            adapter.notifyDataSetChanged()
+            Log.d("DashboardFragment", "수정 완료: $itemToUpdate")
+        } else {
+            Log.e("DashboardFragment", "수정할 아이템을 찾을 수 없습니다. Index: $index")
+        }
+    }
+
+
     fun editPhoto(indexToEdit: Int) {
         Log.d("DashboardFragment", "editPhoto 호출됨. 수정 대상 Index: $indexToEdit")
 
@@ -135,8 +154,12 @@ class DashboardFragment : Fragment() {
         if (itemToEdit != null) {
             Log.d("DashboardFragment", "수정 대상 찾음: $itemToEdit")
 
-            // 수정 대화상자 열기 (예: 기존 데이터를 전달)
-            val dialog = AddDescriptionDialogFragment.newInstance(itemToEdit.imageUrl).apply {
+            // 수정 모드로 대화상자 호출
+            val dialog = AddDescriptionDialogFragment.newInstance(
+                imageUrl = itemToEdit.imageUrl,
+                isEditing = true,
+                index = indexToEdit
+            ).apply {
                 setTargetFragment(this@DashboardFragment, 0)
             }
             dialog.show(parentFragmentManager, "EditDescriptionDialogFragment")
@@ -144,6 +167,7 @@ class DashboardFragment : Fragment() {
             Log.e("DashboardFragment", "수정할 아이템을 찾을 수 없습니다. Index: $indexToEdit")
         }
     }
+
 
 
 
