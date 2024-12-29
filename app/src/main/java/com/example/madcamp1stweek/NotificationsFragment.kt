@@ -37,17 +37,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.LatLngBounds
+
 
 class NotificationsFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var recyclerViewFavorites: RecyclerView
     private lateinit var favoriteAdapter: FavoriteShopAdapter
-    private lateinit var favoriteNames: List<String>
     private lateinit var sharedPreferences: SharedPreferences
     private val likedShopsKey = "liked_shops"
     private var mMap: GoogleMap? = null  // Google Map 변수 추가
-
-
+    // 즐겨찾기된 미용실 객체 목록 생성
+    private lateinit var favoriteShops: List<HairShop>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,68 +71,97 @@ class NotificationsFragment : Fragment(), OnMapReadyCallback {
         recyclerViewFavorites = view.findViewById(R.id.recyclerViewFavorites)
         recyclerViewFavorites.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        // 즐겨찾기된 미용실 이름 목록 생성
-        favoriteNames = getFavoriteShopNames(likedShops)
-
-        // 어댑터 설정
-        favoriteAdapter = FavoriteShopAdapter(favoriteNames)
-        recyclerViewFavorites.adapter = favoriteAdapter
-    }
-
-    // SharedPreferences의 likedShops를 기반으로 즐겨찾기된 미용실 이름 목록을 반환
-    private fun getFavoriteShopNames(likedShops: Set<String>?): List<String> {
-        val favoriteList = mutableListOf<String>()
-
-        // 전체 미용실 목록 생성 (HomeFragment와 동일)
+        // 전체 미용실 목록 생성
         val allShops = generateDummyShops()
 
-        // likedShops에 포함된 phoneNumber를 가진 미용실의 이름을 추가
-        likedShops?.forEach { phoneNumber ->
-            val shop = allShops.find { it.phoneNumber == phoneNumber }
-            shop?.let {
-                favoriteList.add(it.name)
-            }
-        }
+        // favoriteShops 초기화: likedShops에 포함된 phoneNumber를 가진 HairShop 객체들 필터링
+        favoriteShops = allShops.filter { it.phoneNumber in (likedShops ?: emptySet()) }
 
-        return favoriteList
+        // 어댑터 설정
+        favoriteAdapter = FavoriteShopAdapter(favoriteShops, object : FavoriteShopAdapter.OnItemClickListener {
+            override fun onItemClick(hairShop: HairShop) {
+                // 지도에서 해당 미용실 위치로 이동
+                moveMapToLocation(hairShop.latitude, hairShop.longitude, hairShop.name)
+            }
+        })
+        recyclerViewFavorites.adapter = favoriteAdapter
+
+        // 지도에 모든 즐겨찾기된 미용실 마커 추가
+        addMarkersToMap()
     }
 
     // HomeFragment에서 사용한 동일한 더미 데이터 생성 함수
     private fun generateDummyShops(): List<HairShop> {
         return listOf(
-            HairShop("킷키헤어", "0507-1427-0953", R.drawable.kitk_hair_logo),
-            HairShop("LSJ뷰티헤어", "0507-1435-2330", R.drawable.lsj_logo),
-            HairShop("야도헤어", "0507-1407-8963", R.drawable.yaddo_logo),
-            HairShop("해크니헤어", "0507-1443-2322", R.drawable.hakni_logo),
-            HairShop("니니티헤어", "0507-1410-5856", R.drawable.ninity_logo),
-            HairShop("리소헤어", "0507-1331-2465", R.drawable.liso_logo),
-            HairShop("SJ뷰티헤어", "0507-1336-9083", R.drawable.sj_beauty_logo),
-            HairShop("프랫헤어", "042-487-4918", R.drawable.pratt_logo),
-            HairShop("CM3헤어모드", "0507-1408-4149", R.drawable.cm3_logo),
-            HairShop("에이프린헤어", "0507-1360-1054", R.drawable.aprin_logo),
-            HairShop("피즈피헤어", "0507-1379-8084", R.drawable.fizfi_logo),
-            HairShop("살롱드비바체", "0507-1446-0139", R.drawable.salon_de_logo),
-            HairShop("라라몽", "0507-1370-0025", R.drawable.raramong_logo),
-            HairShop("고요아틀리에", "0507-1370-8755", R.drawable.goyo_logo),
-            HairShop("아논헤어", "0507-1474-9339", R.drawable.anon_logo),
-            HairShop("영롱헤어", "042-826-1666", R.drawable.younglong_logo),
-            HairShop("지아트원헤어", "0507-1321-7437", R.drawable.ji_art_logo),
-            HairShop("디어준헤어", "010-7925-1870", R.drawable.dearjun_logo),
-            HairShop("제이블리", "0507-1336-6621", R.drawable.j_vely_logo),
-            HairShop("쏠르씨엘헤어", "0507-1378-3322", R.drawable.souls_logo)
+            HairShop("킷키헤어", "0507-1427-0953", R.drawable.kitk_hair_logo,36.358,127.353),
+            HairShop("LSJ뷰티헤어", "0507-1435-2330", R.drawable.lsj_logo,36.362,127.350),
+            HairShop("야도헤어", "0507-1407-8963", R.drawable.yaddo_logo,36.353,127.377),
+            HairShop("해크니헤어", "0507-1443-2322", R.drawable.hakni_logo,36.359,127.351),
+            HairShop("니니티헤어", "0507-1410-5856", R.drawable.ninity_logo,36.363,127.353),
+            HairShop("리소헤어", "0507-1331-2465", R.drawable.liso_logo,36.362,127.350),
+            HairShop("SJ뷰티헤어", "0507-1336-9083", R.drawable.sj_beauty_logo, 36.359,127.346),
+            HairShop("프랫헤어", "042-487-4918", R.drawable.pratt_logo, 36.359,127.346),
+            HairShop("CM3헤어모드", "0507-1408-4149", R.drawable.cm3_logo, 36.359,127.346),
+            HairShop("에이프린헤어", "0507-1360-1054", R.drawable.aprin_logo, 36.359,127.346),
+            HairShop("피즈피헤어", "0507-1379-8084", R.drawable.fizfi_logo, 36.359,127.346),
+            HairShop("살롱드비바체", "0507-1446-0139", R.drawable.salon_de_logo, 36.359,127.346),
+            HairShop("라라몽", "0507-1370-0025", R.drawable.raramong_logo, 36.359,127.346),
+            HairShop("고요아틀리에", "0507-1370-8755", R.drawable.goyo_logo, 36.359,127.346),
+            HairShop("아논헤어", "0507-1474-9339", R.drawable.anon_logo, 36.359,127.346),
+            HairShop("영롱헤어", "042-826-1666", R.drawable.younglong_logo, 36.359,127.346),
+            HairShop("지아트원헤어", "0507-1321-7437", R.drawable.ji_art_logo, 36.359,127.346),
+            HairShop("디어준헤어", "010-7925-1870", R.drawable.dearjun_logo, 36.359,127.346),
+            HairShop("제이블리", "0507-1336-6621", R.drawable.j_vely_logo, 36.359,127.346),
+            HairShop("쏠르씨엘헤어", "0507-1378-3322", R.drawable.souls_logo, 36.359,127.346)
         )
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val location = LatLng(36.350, 127.384)  // 대전 중심 위치
 
-        val markerOptions = MarkerOptions()
-        markerOptions.position(location)
-        markerOptions.title("대전")
-        markerOptions.snippet("샵 위치")
+        // 초기 카메라 위치 설정 (대전 중심지)
+        val initialLocation = LatLng(36.350, 127.384) // 대전 중심지
+        mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 12f)) // 12f는 줌 레벨
 
-        mMap?.addMarker(markerOptions)
-        mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
+
+        // 모든 즐겨찾기된 미용실에 마커 추가
+        addMarkersToMap()
+    }
+
+    // 모든 즐겨찾기된 미용실에 마커 추가하는 메서드
+    private fun addMarkersToMap() {
+        mMap?.clear() // 기존 마커 삭제
+
+        if (::favoriteShops.isInitialized && favoriteShops.isNotEmpty()) {
+            val builder = LatLngBounds.Builder()
+
+            for (shop in favoriteShops) {
+                val location = LatLng(shop.latitude, shop.longitude)
+                val markerOptions = MarkerOptions()
+                    .position(location)
+                    .title(shop.name)
+                    .snippet(shop.phoneNumber)
+
+                mMap?.addMarker(markerOptions)
+                builder.include(location)
+            }
+
+            // 모든 마커가 포함되도록 카메라 범위 설정
+            val bounds = builder.build()
+            val padding = 100 // 화면 가장자리에서의 여백 (픽셀 단위)
+
+            mMap?.setOnMapLoadedCallback {
+                mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
+            }
+        }
+    }
+
+    // 특정 위치로 카메라 이동하는 메서드
+    private fun moveMapToLocation(latitude: Double, longitude: Double, title: String) {
+        val location = LatLng(latitude, longitude)
+        mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+
+        // 마커 클릭 시 정보 표시
+        mMap?.addMarker(MarkerOptions().position(location).title(title))?.showInfoWindow()
     }
 }
