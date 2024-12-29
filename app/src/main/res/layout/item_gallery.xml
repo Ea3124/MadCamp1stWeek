@@ -15,17 +15,6 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <!-- 미용실 이름 -->
-        <TextView
-            android:id="@+id/hairshopNameTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="미용실 이름"
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp" />
 
         <!-- 이미지 및 별점 -->
         <FrameLayout
@@ -51,6 +40,17 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </FrameLayout>
+        <!-- 미용실 이름 -->
+        <TextView
+            android:id="@+id/hairshopNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="미용실 이름"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
 
         <!-- 사진 설명 -->
         <TextView
