@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.fragment:fragment-ktx:1.5.5")
