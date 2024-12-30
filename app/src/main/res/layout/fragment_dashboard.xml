@@ -19,10 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-
         android:layout_margin="16dp"
         android:backgroundTint="@color/deep_yellow"
-        android:text="리뷰 쓰기"
+        android:text="+"
         android:textColor="@android:color/white" /> <!-- 오른쪽 아래 정렬 -->
 
 </FrameLayout>
