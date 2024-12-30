@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class GalleryAdapter(
-    private val dashboardItems: MutableList<DashboardItem>,
+    val dashboardItems: MutableList<DashboardItem>,
     private val onItemClick: (String, String, Float, String, Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

@@ -122,33 +122,69 @@ class DashboardFragment : Fragment() {
         )
 
         galleryItems.add(0, newItem)
-        adapter.notifyItemInserted(0)
-        view?.findViewById<RecyclerView>(R.id.recyclerView)?.smoothScrollToPosition(0)
+        // (2) 어댑터에서 dashboardItems도 갱신
+        val adapterRef = adapter as? GalleryAdapter
+        adapterRef?.let { galAdapter ->
+            // dashboardItems에서 position=0은 Header.
+            // 새 갤러리 카드를 맨 위(헤더 아래)에 표시하려면 position=1에 삽입.
+            val positionToInsert = 1
+
+            // DashboardItem.GalleryCard 형태로 삽입
+            galAdapter.dashboardItems.add(positionToInsert, DashboardItem.GalleryCard(newItem))
+
+            // (3) notifyItemInserted로 개별 삽입 애니메이션
+            galAdapter.notifyItemInserted(positionToInsert)
+
+            // 스크롤 맨 위로 이동 (선택 사항)
+            view?.findViewById<RecyclerView>(R.id.recyclerView)?.smoothScrollToPosition(positionToInsert)
+        }
     }
 
 
     fun deletePhoto(indexToDelete: Int) {
         Log.d("DashboardFragment", "deletePhoto 호출됨. 삭제 대상 Index: $indexToDelete")
 
-        // galleryItems에서 해당 인덱스를 가진 아이템 삭제
+        // 1) 'galleryItems'에서 먼저 해당 GalleryItem을 찾는다
         val itemToDelete = galleryItems.find { it.index == indexToDelete }
         if (itemToDelete != null) {
-            Log.d("DashboardFragment", "삭제 대상 찾음: $itemToDelete")
+            // galleryItems에서도 제거 (동기화)
             galleryItems.remove(itemToDelete)
 
-            // 인덱스를 다시 설정
-            galleryItems.forEachIndexed { newIndex, item ->
-                item.index = newIndex + 1 // 인덱스는 1부터 시작
-                Log.d("DashboardFragment", "인덱스 재설정: ${item.index} - ${item.imageUrl}")
+            // 2) 어댑터 쪽 DashboardItem 목록에서도 제거
+            //    -> GalleryAdapter 내부의 'dashboardItems' 중,
+            //       이 itemToDelete를 담고 있는 DashboardItem.GalleryCard를 찾아야 함.
+            val adapterRef = adapter as? GalleryAdapter
+            if (adapterRef != null) {
+                val position = adapterRef.dashboardItems.indexOfFirst { dashboardItem ->
+                    dashboardItem is DashboardItem.GalleryCard &&
+                            dashboardItem.galleryItem.index == indexToDelete
+                }
+
+                if (position != -1) {
+                    // dashboardItems에서 해당 위치 제거
+                    adapterRef.dashboardItems.removeAt(position)
+                    // notifyItemRemoved로 삭제 애니메이션 트리거
+                    adapterRef.notifyItemRemoved(position)
+                } else {
+                    Log.e("DashboardFragment", "어댑터 내에서 해당 item을 찾을 수 없음.")
+                    // fallback: 전체 갱신
+                    adapterRef.notifyDataSetChanged()
+                }
+            } else {
+                // 어댑터 참조 불가 시 fallback
+                adapter.notifyDataSetChanged()
             }
 
-            // 어댑터에 변경 알림
-            adapter.notifyDataSetChanged()
-            Log.d("DashboardFragment", "어댑터에 변경 사항 반영 완료.")
+            // 이후 galleryItems의 인덱스 재정렬 (원한다면)
+            galleryItems.forEachIndexed { newIndex, item ->
+                item.index = newIndex + 1 // 인덱스는 1부터 시작
+            }
+
         } else {
             Log.e("DashboardFragment", "삭제할 아이템을 찾을 수 없습니다. Index: $indexToDelete")
         }
     }
+
     fun updatePhoto(index: Int, newDescription: String, newRating: Float, newHairshopName: String) {
         Log.d("DashboardFragment", "updatePhoto 호출됨. 수정 대상 Index: $index")
 
