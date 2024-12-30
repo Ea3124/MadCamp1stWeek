@@ -1,16 +1,15 @@
-// FavoriteShopAdapter.kt
 package com.example.madcamp1stweek
 
-
-import android.widget.Filter
-import android.widget.Filterable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
 class FavoriteShopAdapter(
     private var favoriteNames: List<HairShop>,
@@ -40,7 +39,15 @@ class FavoriteShopAdapter(
     override fun onBindViewHolder(holder: FavoriteShopViewHolder, position: Int) {
         val favorite = favoriteNames[position]
         holder.textViewFavoriteName.text = favorite.name
-        holder.imageViewFavorite.setImageResource(favorite.imageResId)
+
+        // Glide를 사용하여 원형으로 이미지 로드
+        Glide.with(holder.itemView.context)
+            .load(favorite.imageResId) // 이미지 리소스 ID 또는 URL
+            .transform(CircleCrop()) // 원형 변환 적용
+            .into(holder.imageViewFavorite) // 올바른 ImageView 참조
+
+        // 리스트 항목의 배경을 투명하게 설정
+        holder.itemView.setBackgroundColor(android.graphics.Color.TRANSPARENT)
 
         // 클릭 리스너 설정
         holder.itemView.setOnClickListener {
