@@ -8,8 +8,6 @@
     android:background="@color/background_yellow"
     android:gravity="center"
     tools:context=".InfoActivity"
-    android:paddingTop="114dp"
-    android:paddingBottom="152dp"
     >
 
     <!-- 이미지 로고 -->
@@ -19,6 +17,7 @@
         android:layout_height="240dp"
         android:src="@drawable/logotest"
         android:contentDescription="logo"
+        android:layout_marginTop="114dp"
         android:layout_marginBottom="16dp" />
 
 
@@ -39,6 +38,7 @@
         android:layout_height="188dp"
         android:orientation="vertical"
         android:background="#00FFFFFF"
+        android:layout_marginBottom="50dp"
         >
 
     <!-- ID 입력 필드 -->
