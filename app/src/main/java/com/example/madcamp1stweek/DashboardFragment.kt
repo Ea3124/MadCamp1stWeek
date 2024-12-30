@@ -153,12 +153,16 @@ class DashboardFragment : Fragment() {
         val itemToEdit = galleryItems.find { it.index == indexToEdit }
         if (itemToEdit != null) {
             Log.d("DashboardFragment", "수정 대상 찾음: $itemToEdit")
+            Log.d("DashboardFragment", "전달할 데이터 - imageUrl: ${itemToEdit.imageUrl}, description: ${itemToEdit.description}, rating: ${itemToEdit.rating}, hairshopName: ${itemToEdit.hairshopName}")
 
             // 수정 모드로 대화상자 호출
             val dialog = AddDescriptionDialogFragment.newInstance(
                 imageUrl = itemToEdit.imageUrl,
                 isEditing = true,
-                index = indexToEdit
+                index = indexToEdit,
+                description = itemToEdit.description,
+                rating = itemToEdit.rating,
+                hairshopName = itemToEdit.hairshopName
             ).apply {
                 setTargetFragment(this@DashboardFragment, 0)
             }
@@ -167,6 +171,7 @@ class DashboardFragment : Fragment() {
             Log.e("DashboardFragment", "수정할 아이템을 찾을 수 없습니다. Index: $indexToEdit")
         }
     }
+
 
 
 

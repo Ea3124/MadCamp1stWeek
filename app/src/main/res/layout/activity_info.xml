@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:background="@color/background_yellow"
+    android:gravity="center"
     tools:context=".InfoActivity">
 
+    <!-- 이미지 로고 -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@raw/snip_logo"
+        android:contentDescription="logo"
+        android:layout_marginBottom="16dp" />
+
+
+    <!-- 설명 텍스트 -->
     <TextView
-        android:id="@+id/textViewLogin"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"/>
+        android:text="나만의 미용실, 손쉽게 모아서 봐요."
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="24dp" />
 
+    <!-- ID 입력 필드 -->
     <EditText
         android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="아이디"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:hint="ID"
+        android:textSize="12sp"
         android:inputType="text"
-        android:layout_marginBottom="16dp"/>
+        android:background="@drawable/rounded_input_background"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
 
+    <!-- 비밀번호 입력 필드 -->
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="비밀번호"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:hint="Password"
+        android:textSize="12sp"
+        android:background="@drawable/rounded_input_background"
+        android:padding="12dp"
         android:inputType="textPassword"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp" />
 
+    <!-- 로그인 버튼 -->
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="로그인" />
+        android:layout_width="220dp"
+        android:layout_height="55dp"
+        android:text="로그인"
+        android:backgroundTint="@color/login_yellow"
+        android:textColor="@android:color/black"
+        android:padding="12dp" />
 
 </LinearLayout>
