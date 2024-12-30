@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MadCamp1stWeek" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">#F6F4EC</item>
+        <!-- 상단바 텍스트 및 아이콘 색 -->
+        <item name="colorOnPrimary">#1B1A17</item>
     </style>
 
     <style name="Theme.MadCamp1stWeek" parent="Base.Theme.MadCamp1stWeek" />

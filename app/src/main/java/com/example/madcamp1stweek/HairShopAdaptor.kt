@@ -3,6 +3,7 @@ package com.example.madcamp1stweek
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -49,6 +50,9 @@ class HairShopAdapter(
         val shop = filteredShopList[position] // filteredShopList 사용
         holder.textViewName.text = shop.name
         holder.textViewPhone.text = shop.phoneNumber
+
+        // 항목의 배경을 투명하게 설정
+        holder.itemView.setBackgroundColor(Color.TRANSPARENT)
 
         Glide.with(holder.itemView.context)
             .load(shop.imageResId)

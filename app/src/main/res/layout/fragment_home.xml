@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,15 +11,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:paddingTop="8dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
         android:orientation="horizontal"
         android:gravity="center_vertical|end">
 
         <ImageView
-            android:layout_width="88pt"
-            android:layout_height="27pt"
-            android:src="@drawable/myhair_down"
-            android:layout_marginLeft="-18dp"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:src="@drawable/snip_final"
+            android:layout_marginLeft="0dp"
              />
 
         <!-- Spacer: 이미지와 검색창 사이를 띄우기 위해 공간 추가 -->
@@ -37,23 +41,15 @@
 
     </LinearLayout>
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview_2"
-        android:layout_width="match_parent"
-        android:layout_height="696dp"
-        app:cardCornerRadius="8dp"
-        >
-
     <!-- RecyclerView: 상단 바 아래에 배치 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewShops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:background="#00FFFFFF"/>
-
-    </androidx.cardview.widget.CardView>
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        tools:listitem="@layout/item_shop"
+        android:background="@android:color/transparent"
+        />
 
 </LinearLayout>
