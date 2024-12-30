@@ -6,6 +6,7 @@
     <color name="deep_yellow">#FFBB14</color>
     <color name="background_yellow">#F6F4EC</color>
     <color name="login_yellow">#FFD876</color>
+    <color name="gray">#62626C</color>
 
 
 </resources>

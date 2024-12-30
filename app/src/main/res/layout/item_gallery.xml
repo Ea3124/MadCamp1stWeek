@@ -38,6 +38,7 @@
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:fontFamily="@font/pretendardbold"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="8dp"
             />
@@ -52,6 +53,7 @@
             android:text="사진 설명"
             android:textColor="@android:color/black"
             android:textSize="12sp"
+            android:fontFamily="@font/pretendardregular"
             android:ellipsize="end"
             android:maxLines="1"/>
 
@@ -66,6 +68,7 @@
 
             android:text="⭐ 4.5"
             android:textSize="16sp"
+            android:fontFamily="@font/pretendardbold"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 

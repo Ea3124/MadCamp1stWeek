@@ -13,6 +13,7 @@
         android:text="리뷰 작성하기"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:drawablePadding="8dp"
         android:layout_marginBottom="16dp" />
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
+        android:fontFamily="@font/pretendardbold"
         android:background="@drawable/spinner_background"
         android:popupBackground="@color/background_yellow" />
     <!-- 사진 설명 입력 -->
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:hint="솔직하게 리뷰를 작성해주세요!"
+        android:fontFamily="@font/pretendardbold"
         android:padding="12dp"
         android:textSize="16sp"
         android:background="@drawable/edittext_background"
@@ -69,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
+            android:fontFamily="@font/pretendardbold"
             android:textSize="14sp"
             android:background="@drawable/review_button_background"
             android:textColor="#000000" />
@@ -78,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="추가"
+            android:fontFamily="@font/pretendardbold"
             android:textSize="14sp"
             android:background="@drawable/review_button_background"
             android:textColor="#000000" />
