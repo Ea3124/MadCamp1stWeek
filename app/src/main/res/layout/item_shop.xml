@@ -23,6 +23,10 @@
         android:background="@drawable/home_shop_border"
         >
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewHairShop"
             android:layout_width="60dp"
@@ -30,6 +34,8 @@
             android:scaleType="centerCrop"
             android:src="@drawable/kitk_hair_logo"
             app:shapeAppearanceOverlay="@style/RoundedImageViewStyle"/>
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"

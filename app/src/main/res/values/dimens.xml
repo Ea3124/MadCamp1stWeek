@@ -1,0 +1,4 @@
+<!-- res/values/dimens.xml -->
+<resources>
+    <dimen name="image_corner_radius">9999dp</dimen> <!-- 원하는 반경 값으로 조정 -->
+</resources>

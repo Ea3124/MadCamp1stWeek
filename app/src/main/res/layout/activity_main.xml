@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hi hi"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!-- 프래그먼트를 표시할 컨테이너 -->
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment_container"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-<!--    &lt;!&ndash; Bottom Navigation Bar &ndash;&gt;-->
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottom_navigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        app:menu="@menu/bottom_nav_menu" />-->
-
     <!-- Bottom Navigation Bar -->
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -45,8 +22,10 @@
         style="@style/RoundedBottomNavigationView"
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:layout_height="71dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="#1B1A17"
         app:itemTextColor="@color/bottom_nav_color_selector"
         app:itemIconTint="@color/bottom_nav_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
