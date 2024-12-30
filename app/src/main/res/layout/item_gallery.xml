@@ -6,7 +6,8 @@
     android:layout_margin="4dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
-    app:cardBackgroundColor="#F3E6C7">
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/background_yellow">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
 
             android:text="미용실 이름"
             android:textColor="@android:color/black"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="8dp"
@@ -50,7 +51,7 @@
             android:gravity="center_vertical"
             android:text="사진 설명"
             android:textColor="@android:color/black"
-            android:textSize="8sp"
+            android:textSize="12sp"
             android:ellipsize="end"
             android:maxLines="1"/>
 
@@ -62,10 +63,10 @@
             android:layout_gravity="start"
             android:layout_marginTop="4dp"
             android:padding="4dp"
-            android:background="@drawable/rating_background"
+
             android:text="⭐ 4.5"
-            android:textSize="10sp"
-            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
     </LinearLayout>

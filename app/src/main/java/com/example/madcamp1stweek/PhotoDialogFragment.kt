@@ -24,6 +24,7 @@ class PhotoDialogFragment : DialogFragment() {
         val photoUrl = arguments?.getString(ARG_PHOTO_URL)
         val description = arguments?.getString(ARG_DESCRIPTION)
         val hairshopName = arguments?.getString(ARG_HAIRSHOP_NAME)
+        val rating = arguments?.getFloat(ARG_RATING) ?: 0f
 
         photoUrl?.let {
             Glide.with(this)
@@ -32,6 +33,8 @@ class PhotoDialogFragment : DialogFragment() {
         }
         binding.photoDescription.text = description
         binding.hairshopName.text = hairshopName
+        binding.photoRating.text = "⭐ ${rating}"
+
 
         // 닫기 버튼
         binding.closeButton.setOnClickListener {
@@ -81,19 +84,21 @@ class PhotoDialogFragment : DialogFragment() {
         private const val ARG_PHOTO_URL = "photoUrl"
         private const val ARG_DESCRIPTION = "description"
         private const val ARG_HAIRSHOP_NAME = "hairshopName"
+        private const val ARG_RATING = "rating" // 별점 추가
         private const val ARG_INDEX = "index"
 
-        fun newInstance(photoUrl: String, description: String, hairshopName: String, index: Int): PhotoDialogFragment {
-            Log.d("PhotoDialogFragment", "newInstance 호출됨. Index: $index")
+        fun newInstance(photoUrl: String, description: String, hairshopName: String, rating: Float, index: Int): PhotoDialogFragment {
             val fragment = PhotoDialogFragment()
             val args = Bundle()
             args.putString(ARG_PHOTO_URL, photoUrl)
             args.putString(ARG_DESCRIPTION, description)
             args.putString(ARG_HAIRSHOP_NAME, hairshopName)
-            args.putInt(ARG_INDEX, index) // 인덱스를 전달
+            args.putFloat(ARG_RATING, rating) // 별점 추가
+            args.putInt(ARG_INDEX, index)
             fragment.arguments = args
             return fragment
         }
     }
+
 
 }

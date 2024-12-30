@@ -39,10 +39,13 @@ class DashboardFragment : Fragment() {
         }
 
         adapter = GalleryAdapter(galleryItems) { photoUrl, description, rating, hairshopName, index ->
-            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName, index).apply {
+            // rating을 포함한 인자 전달
+            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName, rating, index).apply {
                 setTargetFragment(this@DashboardFragment, 0)
             }.show(parentFragmentManager, "PhotoDialog")
         }
+
+
 
 
         recyclerView.adapter = adapter

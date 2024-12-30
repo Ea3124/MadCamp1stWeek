@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
 import android.widget.Spinner
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import java.io.InputStreamReader
 import com.google.gson.Gson
@@ -25,20 +26,23 @@ class AddDescriptionDialogFragment : DialogFragment() {
         Log.d("AddDescriptionDialog", "onCreateDialog called")
         Log.d("AddDescriptionDialog", "Arguments - imageUrl: $imageUrl, isEditing: $isEditing, index: $index")
 
+        // 레이아웃 인플레이션
         val view: View = LayoutInflater.from(requireContext()).inflate(R.layout.add_description_dialog, null)
 
+        // 뷰 초기화
         val input = view.findViewById<EditText>(R.id.editDescription)
         val ratingBar = view.findViewById<RatingBar>(R.id.ratingBar)
         val spinner = view.findViewById<Spinner>(R.id.hairshopSpinner)
+        val cancelButton = view.findViewById<Button>(R.id.cancelButton)
+        val addButton = view.findViewById<Button>(R.id.addButton)
 
+        // 미용실 데이터 설정
         val hairshopNames = loadHairshopData().map { it.name }
-        Log.d("AddDescriptionDialog", "Loaded hairshop names: $hairshopNames")
-
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, hairshopNames)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        // 수정 모드일 경우 기존 데이터 설정
+        // 수정 모드 처리
         if (isEditing) {
             val existingDescription = arguments?.getString(ARG_DESCRIPTION)
             val existingRating = arguments?.getFloat(ARG_RATING) ?: 3.0f
@@ -56,38 +60,51 @@ class AddDescriptionDialogFragment : DialogFragment() {
             }
         }
 
-        return AlertDialog.Builder(requireContext())
-            .setTitle(if (isEditing) "리뷰 수정" else "리뷰 쓰기")
-            .setView(view)
-            .setPositiveButton(if (isEditing) "수정" else "추가") { _, _ ->
-                val description = input.text.toString()
-                val rating = ratingBar.rating
-                val selectedHairshop = spinner.selectedItem.toString()
+        // 버튼 이벤트 처리
+        cancelButton.setOnClickListener {
+            dismiss() // 다이얼로그 닫기
+        }
 
-                Log.d("AddDescriptionDialog", "Positive button clicked - description: $description, rating: $rating, selectedHairshop: $selectedHairshop")
+        addButton.setOnClickListener {
+            val description = input.text.toString()
+            val rating = ratingBar.rating
+            val selectedHairshop = spinner.selectedItem.toString()
 
-                if (isEditing) {
-                    Log.d("AddDescriptionDialog", "Updating photo - index: $index")
-                    (targetFragment as DashboardFragment).updatePhoto(
-                        index = index,
-                        newDescription = description,
-                        newRating = rating,
-                        newHairshopName = selectedHairshop
-                    )
-                } else {
-                    Log.d("AddDescriptionDialog", "Adding new photo")
-                    (targetFragment as DashboardFragment).addImageWithDescription(
-                        imageUrl = imageUrl ?: "",
-                        description = description,
-                        rating = rating,
-                        hairshopName = selectedHairshop
-                    )
-                }
+            Log.d("AddDescriptionDialog", "Adding/Updating - description: $description, rating: $rating, selectedHairshop: $selectedHairshop")
+
+            if (isEditing) {
+                Log.d("AddDescriptionDialog", "Updating photo - index: $index")
+                (targetFragment as DashboardFragment).updatePhoto(
+                    index = index,
+                    newDescription = description,
+                    newRating = rating,
+                    newHairshopName = selectedHairshop
+                )
+            } else {
+                Log.d("AddDescriptionDialog", "Adding new photo")
+                (targetFragment as DashboardFragment).addImageWithDescription(
+                    imageUrl = imageUrl ?: "",
+                    description = description,
+                    rating = rating,
+                    hairshopName = selectedHairshop
+                )
             }
-            .setNegativeButton("취소") { _, _ ->
-                Log.d("AddDescriptionDialog", "Negative button clicked - Cancel")
-            }
-            .create()
+            dismiss() // 다이얼로그 닫기
+        }
+
+        // 다이얼로그 생성
+        return Dialog(requireContext(), R.style.TransparentDialogTheme).apply {
+            setContentView(view)
+            setCancelable(true)
+        }
+    }
+    override fun onStart() {
+        super.onStart()
+        // 다이얼로그 크기 조정
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),  // 화면 너비의 90%
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     private fun loadHairshopData(): List<HairShop> {

@@ -1,38 +1,62 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="312dp"
+        android:layout_height="472dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingHorizontal="24dp"
+        android:background="@drawable/rounded_dialog_background">
 
         <!-- 사진 이미지 -->
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photoImageView"
-            android:layout_width="400dp"
-            android:layout_height="450dp"
+            android:layout_width="264dp"
+            android:layout_height="284dp"
+            android:layout_marginTop="24dp"
             android:layout_weight="2"
             android:scaleType="centerCrop"
-            android:contentDescription="사진 이미지" />
+            android:contentDescription="사진 이미지"
+            app:shapeAppearanceOverlay="@style/RoundedCornerImageView" />
 
-        <!-- 미용실 이름 -->
-        <TextView
-            android:id="@+id/hairshopName"
+        <!-- 제목과 별점 영역 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="8dp"
-            android:text="미용실 이름"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center" />
+            android:paddingHorizontal="0dp">
+
+            <!-- 미용실 이름 -->
+            <TextView
+                android:id="@+id/hairshopName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="미용실 이름"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="start" />
+
+            <!-- 별점 -->
+            <TextView
+                android:id="@+id/photoRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⭐ 0.0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
 
         <!-- 사진 설명 -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:backgroundTint="#F3E6C7"
+            android:padding="0dp"
+            android:backgroundTint="@color/white"
             android:background="@drawable/rounded_background">
 
             <TextView
@@ -40,12 +64,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="사진 설명"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="#62626C"
                 android:gravity="start"/> <!-- 왼쪽 정렬 -->
 
         </FrameLayout>
 
+        <!-- 버튼 영역 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,23 +80,32 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/closeButton"
+                android:id="@+id/editButton"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="닫기" />
+                android:layout_marginStart="8dp"
+                android:text="수정"
+                android:background="@drawable/review_button_background"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="삭제" />
+                android:text="삭제"
+                android:background="@drawable/review_button_background"
+                android:textColor="#FF0000" />
+
             <Button
-                android:id="@+id/editButton"
+                android:id="@+id/closeButton"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="수정" />
+                android:text="닫기"
+                android:background="@drawable/review_button_background"
+                android:textColor="#000000" />
+
         </LinearLayout>
     </LinearLayout>
 </layout>
