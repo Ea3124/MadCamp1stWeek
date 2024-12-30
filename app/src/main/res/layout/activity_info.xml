@@ -12,9 +12,9 @@
     <!-- 이미지 로고 -->
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@raw/snip_logo"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:src="@drawable/snipsnip"
         android:contentDescription="logo"
         android:layout_marginBottom="16dp" />
 
@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="나만의 미용실, 손쉽게 모아서 봐요."
+        android:fontFamily="@font/pretendardregular"
         android:textSize="14sp"
         android:textColor="@color/black"
         android:layout_marginBottom="24dp" />

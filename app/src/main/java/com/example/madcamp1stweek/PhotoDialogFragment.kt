@@ -1,10 +1,13 @@
 package com.example.madcamp1stweek
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.example.madcamp1stweek.databinding.FragmentPhotoDialogBinding
@@ -19,6 +22,17 @@ class PhotoDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPhotoDialogBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 투명 설정
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE) // 소프트 입력 모드 조정
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // 전달받은 데이터 설정
         val photoUrl = arguments?.getString(ARG_PHOTO_URL)
@@ -33,15 +47,15 @@ class PhotoDialogFragment : DialogFragment() {
         }
         binding.photoDescription.text = description
         binding.hairshopName.text = hairshopName
-        binding.photoRating.text = "⭐ ${rating}"
-
+        binding.photoRating.text = "⭐ $rating"
 
         // 닫기 버튼
         binding.closeButton.setOnClickListener {
             dismiss() // 다이얼로그 닫기
         }
+
+        // 삭제 버튼
         binding.deleteButton.setOnClickListener {
-            // 삭제 버튼 클릭 시 처리할 로직
             val targetFragment = targetFragment as? DashboardFragment
             val indexToDelete = arguments?.getInt(ARG_INDEX) // 삭제할 항목의 인덱스를 가져옴
 
@@ -55,6 +69,8 @@ class PhotoDialogFragment : DialogFragment() {
                 Log.e("PhotoDialogFragment", "삭제 요청 실패 - Index 또는 대상 프래그먼트가 없음.")
             }
         }
+
+        // 수정 버튼
         binding.editButton.setOnClickListener {
             val targetFragment = targetFragment as? DashboardFragment
             val indexToEdit = arguments?.getInt(ARG_INDEX) // 수정할 항목의 인덱스
@@ -70,9 +86,6 @@ class PhotoDialogFragment : DialogFragment() {
                 Log.e("PhotoDialogFragment", "수정 요청 실패 - Index 또는 대상 프래그먼트가 설정되지 않음.")
             }
         }
-
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -99,6 +112,4 @@ class PhotoDialogFragment : DialogFragment() {
             return fragment
         }
     }
-
-
 }

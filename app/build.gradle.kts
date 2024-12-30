@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         dataBinding = true // Data Binding 활성화
+        viewBinding = true // 추가
     }
 }
 
