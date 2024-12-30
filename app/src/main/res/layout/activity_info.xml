@@ -1,74 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FFFDEB">
+    android:background="@color/background_yellow"
+    android:gravity="center"
+    tools:context=".InfoActivity">
 
-    <!-- Image at the top -->
+    <!-- 이미지 로고 -->
     <ImageView
-        android:id="@+id/imageViewCat"
+        android:id="@+id/logoImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/anon_logo"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="Cat holding scissors"
+        android:src="@raw/snip_logo"
+        android:contentDescription="logo"
         android:layout_marginBottom="16dp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3" />
 
-    <!-- Subtitle -->
+    <!-- 설명 텍스트 -->
     <TextView
-        android:id="@+id/textViewSubtitle"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="나만의 미용실, 손쉽게 모아서 봐요."
-        android:textSize="16sp"
-        android:textColor="#7D7D7D"
-        android:layout_gravity="center_horizontal"
+        android:textSize="14sp"
+        android:textColor="@color/black"
         android:layout_marginBottom="24dp" />
 
-    <!-- Username Input -->
+    <!-- ID 입력 필드 -->
     <EditText
         android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
         android:hint="ID"
-        android:backgroundTint="#E5E5E5"
+        android:textSize="12sp"
         android:inputType="text"
-        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_input_background"
         android:padding="12dp"
-        android:background="@drawable/rounded_input_background"/>
+        android:layout_marginBottom="12dp" />
 
-    <!-- Password Input -->
+    <!-- 비밀번호 입력 필드 -->
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
         android:hint="Password"
-        android:backgroundTint="#E5E5E5"
-        android:inputType="textPassword"
-        android:layout_marginBottom="24dp"
+        android:textSize="12sp"
+        android:background="@drawable/rounded_input_background"
         android:padding="12dp"
-        android:background="@drawable/rounded_input_background"/>
+        android:inputType="textPassword"
+        android:layout_marginBottom="24dp" />
 
-    <!-- Login Button -->
+    <!-- 로그인 버튼 -->
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="55dp"
         android:text="로그인"
-        android:backgroundTint="#F3C64E"
-        android:textColor="#000000"
+        android:backgroundTint="@color/login_yellow"
+        android:textColor="@android:color/black"
         android:padding="12dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
 
 </LinearLayout>

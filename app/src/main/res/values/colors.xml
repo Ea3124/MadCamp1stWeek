@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#DDA0DD</color>
     <color name="deep_yellow">#FFBB14</color>
+    <color name="background_yellow">#F6F4EC</color>
+    <color name="login_yellow">#FFD876</color>
 
 
 </resources>
