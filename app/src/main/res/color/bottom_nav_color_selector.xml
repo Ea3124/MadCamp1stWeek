@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/login_yellow" android:state_checked="true" /> <!-- 활성화: 노란색 -->
+    <item android:color="@color/gray" android:state_checked="false" /> <!-- 비활성화: 회색 -->
+</selector>

@@ -3,15 +3,18 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="홈" />
+        android:title="홈"
+        android:fontFamily="@font/pretendardbold"/>
 
     <item
         android:id="@+id/nav_dashboard"
-        android:icon="@drawable/ic_dashboard"
-        android:title="대시보드" />
+        android:icon="@drawable/ic_review"
+        android:title="리뷰"
+        android:fontFamily="@font/pretendardbold"/>
 
     <item
         android:id="@+id/nav_notifications"
-        android:icon="@drawable/ic_notifications"
-        android:title="알림" />
+        android:icon="@drawable/ic_favorite"
+        android:title="관심목록"
+        android:fontFamily="@font/pretendardbold"/>
 </menu>
