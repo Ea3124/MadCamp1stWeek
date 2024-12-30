@@ -1,3 +1,4 @@
+// InfoActivity.kt
 package com.example.madcamp1stweek
 
 import android.content.Intent
@@ -6,39 +7,74 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.*
 
-class InfoActivity : AppCompatActivity() {
+class InfoActivity : AppCompatActivity(), SignupFragment.SignupListener {
 
     private lateinit var editTextUsername: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonLogin: Button
+    private lateinit var buttonGoToSignup: Button
+
+    private lateinit var db: AppDatabase
+    private lateinit var userDao: UserDao
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        // 레이아웃에서 뷰 참조
+        // 뷰 참조
         editTextUsername = findViewById(R.id.editTextUsername)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
+        buttonGoToSignup = findViewById(R.id.buttonGoToSignup)
 
-        // 로그인 버튼 클릭 리스너 설정
+        // 데이터베이스 초기화
+        db = AppDatabase.getDatabase(this)
+        userDao = db.userDao()
+
         buttonLogin.setOnClickListener {
             val username = editTextUsername.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
 
-            // 간단한 입력 검증 (필요에 따라 수정 가능)
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                // 여기서 실제 인증 로직을 추가할 수 있습니다.
-                // 예: 서버와 통신하여 인증
-
-                // 인증이 성공했다고 가정하고 MainActivity로 이동
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish() // InfoActivity를 스택에서 제거하여 뒤로가기 시 돌아오지 않도록 함
+                coroutineScope.launch {
+                    val user = withContext(Dispatchers.IO) {
+                        userDao.getUser(username, password)
+                    }
+                    if (user != null) {
+                        Toast.makeText(this@InfoActivity, "로그인 성공! 환영합니다, ${user.nickName}님.", Toast.LENGTH_SHORT).show()
+                        // MainActivity로 이동
+                        val intent = Intent(this@InfoActivity, MainActivity::class.java)
+                        // NickName을 MainActivity로 전달
+                        intent.putExtra("NICK_NAME", user.nickName)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this@InfoActivity, "아이디 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
+
+        buttonGoToSignup.setOnClickListener {
+            // SignupFragment 팝업으로 띄우기
+            val signupFragment = SignupFragment()
+            signupFragment.show(supportFragmentManager, "SignupFragment")
+        }
+    }
+
+    override fun onSignupSuccess() {
+        // 회원가입 성공 후 추가 작업이 필요하면 여기에 작성
+        Toast.makeText(this, "회원가입이 성공적으로 완료되었습니다. 로그인해주세요.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
     }
 }

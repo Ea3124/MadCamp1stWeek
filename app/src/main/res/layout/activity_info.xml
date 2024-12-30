@@ -63,4 +63,14 @@
         android:textColor="@android:color/black"
         android:padding="12dp" />
 
+    <!-- 회원가입 버튼 -->
+    <Button
+        android:id="@+id/buttonGoToSignup"
+        android:layout_width="220dp"
+        android:layout_height="55dp"
+        android:text="회원가입"
+        android:backgroundTint="@color/login_yellow"
+        android:textColor="@android:color/black"
+        android:padding="12dp" />
+
 </LinearLayout>

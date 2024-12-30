@@ -1,22 +1,3 @@
-//package com.example.madcamp1stweek
-//
-//import android.os.Bundle
-//import androidx.fragment.app.Fragment
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//
-//class NotificationsFragment : Fragment() {
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_notifications, container, false)
-//    }
-//}
-// NotificationsFragment.kt
 package com.example.madcamp1stweek
 
 import android.content.Context
@@ -25,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +32,9 @@ class NotificationsFragment : Fragment(), OnMapReadyCallback {
     // 즐겨찾기된 미용실 객체 목록 생성
     private lateinit var favoriteShops: List<HairShop>
 
+    //nickname
+    private lateinit var textViewWelcome: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +44,12 @@ class NotificationsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        textViewWelcome = view.findViewById(R.id.textViewWelcome)
+
+        // InfoActivity에서 전달한 NickName 받기
+        val nickName = requireActivity().intent.getStringExtra("NICK_NAME") ?: "사용자"
+        textViewWelcome.text = "$nickName 님, 반가워요"
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)

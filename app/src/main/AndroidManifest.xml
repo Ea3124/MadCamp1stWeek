@@ -17,6 +17,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBB-bPJ-QGhryXPINK9pP9lReeVHbljUrU"/>
 
+        <activity android:name=".SignupActivity"></activity>
         <activity
             android:name=".InfoActivity"
             android:exported="true">
