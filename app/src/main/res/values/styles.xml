@@ -22,4 +22,6 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">true</item> <!-- 배경 어둡게 -->
     </style>
+
+
 </resources>
