@@ -7,7 +7,10 @@
     android:orientation="vertical"
     android:background="@color/background_yellow"
     android:gravity="center"
-    tools:context=".InfoActivity">
+    tools:context=".InfoActivity"
+    android:paddingTop="114dp"
+    android:paddingBottom="152dp"
+    >
 
     <!-- 이미지 로고 -->
     <ImageView
@@ -30,48 +33,65 @@
         android:textColor="@color/black"
         android:layout_marginBottom="24dp" />
 
+
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_height="188dp"
+        android:orientation="vertical"
+        android:background="#00FFFFFF"
+        >
+
     <!-- ID 입력 필드 -->
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="220dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:hint="ID"
         android:textSize="12sp"
         android:inputType="text"
         android:background="@drawable/rounded_input_background"
-        android:padding="12dp"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="16dp"
+        android:fontFamily="@font/pretendardregular"/>
 
     <!-- 비밀번호 입력 필드 -->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="220dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:hint="Password"
         android:textSize="12sp"
         android:background="@drawable/rounded_input_background"
-        android:padding="12dp"
         android:inputType="textPassword"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="16dp"
+        android:fontFamily="@font/pretendardregular"/>
 
     <!-- 로그인 버튼 -->
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="220dp"
-        android:layout_height="55dp"
+        android:layout_height="44dp"
         android:text="로그인"
         android:backgroundTint="@color/login_yellow"
-        android:textColor="@android:color/black"
-        android:padding="12dp" />
+        android:textColor="#1B1A17"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/pretendardbold"/>
 
     <!-- 회원가입 버튼 -->
     <Button
         android:id="@+id/buttonGoToSignup"
         android:layout_width="220dp"
-        android:layout_height="55dp"
+        android:layout_height="44dp"
         android:text="회원가입"
-        android:backgroundTint="@color/login_yellow"
-        android:textColor="@android:color/black"
-        android:padding="12dp" />
+        android:backgroundTint="#1B1A17"
+        android:textColor="@color/login_yellow"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/pretendardbold"/>
+
+</LinearLayout>
 
 </LinearLayout>

@@ -2,6 +2,8 @@ package com.example.madcamp1stweek
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +27,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
+        view?.setBackgroundColor(Color.TRANSPARENT) // 루트 뷰 배경을 투명하게 설정
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +43,9 @@ class HomeFragment : Fragment() {
 
         // RecyclerView 참조
         recyclerViewShops = view.findViewById(R.id.recyclerViewShops)
+
+        // RecyclerView 배경 투명 설정
+        recyclerViewShops.setBackgroundColor(Color.TRANSPARENT)
 
         // 데이터 초기화
         shopList = generateDummyShops()
