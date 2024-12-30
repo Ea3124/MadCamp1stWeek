@@ -22,6 +22,11 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">true</item> <!-- 배경 어둡게 -->
     </style>
+    <style name="RoundedCornerImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- 원하는 둥글기 크기 -->
+    </style>
+
 
 
 </resources>
