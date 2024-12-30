@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_marginBottom="0dp">
+
+    <!-- 단순히 예시용 텍스트 뷰 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <TextView
+        android:id="@+id/tvSnipHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SNIP만의"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    <!-- 단순히 예시용 텍스트 뷰 -->
+    <TextView
+        android:id="@+id/tvSnipHeader2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="생생한 후기들!"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    </LinearLayout>
+</FrameLayout>

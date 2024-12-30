@@ -12,6 +12,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 //import com.example.madcamp1stweek.models.GalleryItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -30,26 +31,41 @@ class DashboardFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
 
+        // --- ① StaggeredGridLayoutManager (2열)로 변경 ---
+        val staggeredLayoutManager = StaggeredGridLayoutManager(
+            2, // 2열
+            StaggeredGridLayoutManager.VERTICAL
+        )
+        // gapStrategy 설정 (아이템 간 간격 조정)
+        staggeredLayoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
+        recyclerView.layoutManager = staggeredLayoutManager
+
+        // hairshopList, galleryItems 기존 로딩 로직 그대로
         hairshopList = loadHairshopData()
-
         if (galleryItems.isEmpty()) {
             galleryItems.addAll(loadGalleryData())
         }
 
-        adapter = GalleryAdapter(galleryItems) { photoUrl, description, rating, hairshopName, index ->
-            // rating을 포함한 인자 전달
-            PhotoDialogFragment.newInstance(photoUrl, description, hairshopName, rating, index).apply {
-                setTargetFragment(this@DashboardFragment, 0)
-            }.show(parentFragmentManager, "PhotoDialog")
+        // dashboardItems (Header + GalleryCard)로 구성하는 부분도 동일
+        val dashboardItems = mutableListOf<DashboardItem>()
+        dashboardItems.add(DashboardItem.Header) // 헤더 추가
+        galleryItems.forEach { gItem ->
+            dashboardItems.add(DashboardItem.GalleryCard(gItem))
         }
 
-
-
-
+        // 어댑터도 기존에 만들어둔 GalleryAdapter(멀티 뷰타입) 사용
+        adapter = GalleryAdapter(
+            dashboardItems,
+            onItemClick = { photoUrl, description, rating, hairshopName, index ->
+                PhotoDialogFragment.newInstance(photoUrl, description, hairshopName, rating, index).apply {
+                    setTargetFragment(this@DashboardFragment, 0)
+                }.show(parentFragmentManager, "PhotoDialog")
+            }
+        )
         recyclerView.adapter = adapter
 
+        // + 버튼(사진 추가) 핸들러
         val addPhotoButton = view.findViewById<Button>(R.id.addPhotoButton)
         addPhotoButton.setOnClickListener {
             openGallery()
@@ -57,6 +73,8 @@ class DashboardFragment : Fragment() {
 
         return view
     }
+
+
 
     private fun loadGalleryData(): List<GalleryItem> {
         val inputStream = resources.openRawResource(R.raw.gallery_data)
