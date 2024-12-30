@@ -14,7 +14,7 @@
         android:id="@+id/logoImageView"
         android:layout_width="160dp"
         android:layout_height="240dp"
-        android:src="@drawable/snipsnip"
+        android:src="@drawable/logotest"
         android:contentDescription="logo"
         android:layout_marginBottom="16dp" />
 
