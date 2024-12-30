@@ -4,7 +4,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="24dp"
+        android:background="@drawable/rounded_dialog_background">
+
 
         <!-- 사진 이미지 -->
         <ImageView
@@ -25,6 +27,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="center" />
+
 
         <!-- 사진 설명 -->
         <FrameLayout
