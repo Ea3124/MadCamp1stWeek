@@ -1,8 +1,9 @@
 <!-- activity_first.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,15 +19,22 @@
 
     <!-- 필터 질문/옵션을 감싸는 LinearLayout
          처음에는 GONE 처리하여 환영문구 사라진 뒤 보이도록 함 -->
-    <LinearLayout
+    <ScrollView
         android:id="@+id/filterQuestionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="80dp">
+
+        <!-- ScrollView의 유일한 자식으로 LinearLayout 추가 -->
+        <LinearLayout
+            android:id="@+id/filterQuestionsLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
         <!-- 0번째 질문 (성별) -->
         <TextView
@@ -116,8 +124,6 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
-    </LinearLayout>
-
     <Button
         android:id="@+id/btnShowResult"
         android:layout_width="wrap_content"
@@ -128,6 +134,9 @@
         android:visibility="gone"
         android:layout_marginBottom="100dp"
         />
+        </LinearLayout>
+    </ScrollView>
+
 
     <!-- (선택사항) 최종적으로 필터 적용 후 보여줄 리스트와 버튼(예시) -->
     <LinearLayout
@@ -160,3 +169,5 @@
     </LinearLayout>
 
 </RelativeLayout>
+
+</layout>
