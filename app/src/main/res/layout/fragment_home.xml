@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="36dp"
-            android:src="@drawable/snip_final"
+            android:src="@drawable/snip_real_final"
             android:layout_marginLeft="0dp"
              />
 
