@@ -4,5 +4,4 @@
     android:padding="8dp"
     android:textSize="16sp"
     android:fontFamily="@font/pretendardregular"
-    android:textColor="@android:color/black"
-    android:drawableEnd="@drawable/ic_arrow_v" />
+    android:textColor="@android:color/black" />

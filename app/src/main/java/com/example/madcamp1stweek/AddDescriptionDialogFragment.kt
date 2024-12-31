@@ -39,7 +39,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
         // 미용실 데이터 설정
         val hairshopNames = loadHairshopData().map { it.name }
         val adapter = ArrayAdapter(requireContext(), R.layout.spinner_dropdown_item, hairshopNames)
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.spinner_title)
         spinner.adapter = adapter
 
 
