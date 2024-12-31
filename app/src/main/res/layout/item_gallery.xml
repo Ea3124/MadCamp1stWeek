@@ -56,20 +56,33 @@
             android:ellipsize="end"
             android:maxLines="1"/>
 
-        <!-- 별점 -->
-        <TextView
-            android:id="@+id/ratingTextView"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
             android:layout_marginTop="4dp"
-            android:padding="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            android:text="⭐ 4.5"
-            android:textSize="16sp"
-            android:fontFamily="@font/pretendardbold"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+            <!-- 아이콘 -->
+            <ImageView
+                android:id="@+id/starIcon"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/star"
+                android:contentDescription="Star Icon"
+                android:layout_marginEnd="2dp" />
+
+            <!-- 별점 텍스트 -->
+            <TextView
+                android:id="@+id/ratingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 4.5"
+                android:textSize="16sp"
+                android:fontFamily="@font/pretendardbold"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
