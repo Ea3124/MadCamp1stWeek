@@ -47,7 +47,7 @@ class PhotoDialogFragment : DialogFragment() {
         }
         binding.photoDescription.text = description
         binding.hairshopName.text = hairshopName
-        binding.photoRating.text = "⭐ $rating"
+        binding.photoRating.text = "$rating"
 
         // 닫기 버튼
         binding.closeButton.setOnClickListener {

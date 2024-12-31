@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import java.io.InputStreamReader
 import com.google.gson.Gson
@@ -30,6 +31,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
         val view: View = LayoutInflater.from(requireContext()).inflate(R.layout.add_description_dialog, null)
 
         // 뷰 초기화
+        val reviewTitle = view.findViewById<TextView>(R.id.reviewTitle)
         val input = view.findViewById<EditText>(R.id.editDescription)
         val ratingBar = view.findViewById<RatingBar>(R.id.ratingBar)
         val spinner = view.findViewById<Spinner>(R.id.hairshopSpinner)
@@ -42,9 +44,9 @@ class AddDescriptionDialogFragment : DialogFragment() {
         adapter.setDropDownViewResource(R.layout.spinner_title)
         spinner.adapter = adapter
 
-
         // 수정 모드 처리
         if (isEditing) {
+            reviewTitle.text = "리뷰 수정하기" // 수정 모드일 때 제목 변경
             val existingDescription = arguments?.getString(ARG_DESCRIPTION)
             val existingRating = arguments?.getFloat(ARG_RATING) ?: 3.0f
             val existingHairshopName = arguments?.getString(ARG_HAIRSHOP_NAME)
@@ -59,6 +61,8 @@ class AddDescriptionDialogFragment : DialogFragment() {
             } else {
                 Log.w("AddDescriptionDialog", "Hairshop name not found in list: $existingHairshopName")
             }
+        } else {
+            reviewTitle.text = "리뷰 작성하기" // 기본 모드일 때 제목 설정
         }
 
         // 버튼 이벤트 처리
@@ -99,6 +103,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
             setCancelable(true)
         }
     }
+
     override fun onStart() {
         super.onStart()
         // 다이얼로그 크기 조정

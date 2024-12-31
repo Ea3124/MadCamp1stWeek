@@ -1,5 +1,6 @@
 package com.example.madcamp1stweek
 
+import SpacingItemDecoration
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -41,6 +42,8 @@ class DashboardFragment : Fragment() {
         staggeredLayoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
         recyclerView.layoutManager = staggeredLayoutManager
 
+        val verticalSpacing = resources.getDimensionPixelSize(R.dimen.item_spacing) // dimens.xml에서 정의
+        recyclerView.addItemDecoration(SpacingItemDecoration(verticalSpacing))
         // hairshopList, galleryItems 기존 로딩 로직 그대로
         hairshopList = loadHairshopData()
         if (galleryItems.isEmpty()) {
