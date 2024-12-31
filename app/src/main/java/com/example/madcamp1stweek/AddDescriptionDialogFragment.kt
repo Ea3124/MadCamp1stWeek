@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RatingBar
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import java.io.InputStreamReader
+import com.willy.ratingbar.BaseRatingBar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.InputStreamReader
 
 class AddDescriptionDialogFragment : DialogFragment() {
 
@@ -33,7 +33,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
         // 뷰 초기화
         val reviewTitle = view.findViewById<TextView>(R.id.reviewTitle)
         val input = view.findViewById<EditText>(R.id.editDescription)
-        val ratingBar = view.findViewById<RatingBar>(R.id.ratingBar)
+        val ratingBar = view.findViewById<BaseRatingBar>(R.id.ratingBar) // BaseRatingBar로 변경
         val spinner = view.findViewById<Spinner>(R.id.hairshopSpinner)
         val cancelButton = view.findViewById<Button>(R.id.cancelButton)
         val addButton = view.findViewById<Button>(R.id.addButton)
@@ -54,7 +54,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
             Log.d("AddDescriptionDialog", "Editing mode - existingDescription: $existingDescription, existingRating: $existingRating, existingHairshopName: $existingHairshopName")
 
             input.setText(existingDescription)
-            ratingBar.rating = existingRating
+            ratingBar.rating = existingRating // BaseRatingBar의 평점 설정
             val selectedIndex = hairshopNames.indexOf(existingHairshopName)
             if (selectedIndex >= 0) {
                 spinner.setSelection(selectedIndex)
@@ -72,7 +72,7 @@ class AddDescriptionDialogFragment : DialogFragment() {
 
         addButton.setOnClickListener {
             val description = input.text.toString()
-            val rating = ratingBar.rating
+            val rating = ratingBar.rating // BaseRatingBar에서 평점 가져오기
             val selectedHairshop = spinner.selectedItem.toString()
 
             Log.d("AddDescriptionDialog", "Adding/Updating - description: $description, rating: $rating, selectedHairshop: $selectedHairshop")

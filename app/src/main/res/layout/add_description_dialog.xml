@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_dialog_background"
@@ -62,18 +63,26 @@
         android:textSize="16sp" />
 
     <!-- 별점 입력 -->
+    <!--
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/deep_yellow"
         android:numStars="5"
         android:progressTint="#FFD876"
         android:rating="0"
-        android:secondaryProgressTint="#5F6369"
-        android:stepSize="1.0" />
+        android:stepSize="1.0"
+        />
+        -->
+    <com.willy.ratingbar.BaseRatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
 
     <!-- 버튼 영역 -->
     <LinearLayout
