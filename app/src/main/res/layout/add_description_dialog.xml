@@ -6,17 +6,33 @@
     android:padding="16dp"
     android:background="@drawable/rounded_dialog_background">
 
-    <TextView
-        android:id="@+id/reviewTitle"
+    <!-- 아이콘과 텍스트를 수평으로 배치하는 LinearLayout 추가 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="리뷰 작성하기"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/pretendardbold"
-        android:gravity="center"
-        android:drawablePadding="8dp"
-        android:layout_marginBottom="16dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/smileIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_pen"
+            android:contentDescription="Pen"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/reviewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리뷰 작성하기"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/pretendardbold"
+            android:gravity="center_vertical"
+            android:drawablePadding="8dp" />
+    </LinearLayout>
 
     <!-- 미용실 이름 선택 Spinner -->
     <Spinner
@@ -28,6 +44,7 @@
         android:fontFamily="@font/pretendardbold"
         android:background="@drawable/spinner_background"
         android:popupBackground="@color/background_yellow" />
+
     <!-- 사진 설명 입력 -->
     <EditText
         android:id="@+id/editDescription"
@@ -56,8 +73,7 @@
         android:numStars="5"
         android:rating="0"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
-        />
+        android:layout_marginBottom="24dp" />
 
     <!-- 버튼 영역 -->
     <LinearLayout

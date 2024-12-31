@@ -1,0 +1,20 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 비활성화된 별 -->
+    <item android:id="@android:id/background">
+        <clip>
+            <bitmap android:src="@drawable/star_empty" android:gravity="center" />
+        </clip>
+    </item>
+    <!-- 활성화된 별 -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <bitmap android:src="@drawable/star_full" android:gravity="center" />
+        </clip>
+    </item>
+    <!-- 활성화된 별 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <bitmap android:src="@drawable/star_full" android:gravity="center" />
+        </clip>
+    </item>
+</layer-list>

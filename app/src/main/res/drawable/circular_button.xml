@@ -1,0 +1,10 @@
+<!-- res/drawable/circular_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/black" /> <!-- 버튼 색상 -->
+    <size
+        android:width="56dp"
+        android:height="56dp" /> <!-- 버튼 크기 (원형 유지) -->
+    <stroke
+        android:width="0dp" />
+
+</shape>

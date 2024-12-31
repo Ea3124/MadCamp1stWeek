@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
     tools:context=".DashboardFragment">
 
@@ -14,15 +15,18 @@
         android:padding="8dp"
         tools:listitem="@layout/item_gallery" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/addPhotoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/deep_yellow"
         android:text="+"
+        android:textColor="@color/login_yellow"
         android:fontFamily="@font/pretendardbold"
-        android:textColor="@android:color/white" /> <!-- 오른쪽 아래 정렬 -->
+        android:contentDescription="Add Photo"
+        app:cornerRadius="28dp"
+        app:backgroundTint="@color/black"
+        app:elevation="6dp" />
 
 </FrameLayout>

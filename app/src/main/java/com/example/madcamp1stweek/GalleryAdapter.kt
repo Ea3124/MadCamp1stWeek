@@ -73,7 +73,7 @@ class GalleryAdapter(
         ) {
             hairshopNameTextView.text = galleryItem.hairshopName
             descriptionTextView.text = galleryItem.description
-            ratingTextView.text = "⭐ ${galleryItem.rating}"
+            ratingTextView.text = "${galleryItem.rating}"
 
             Glide.with(imageView.context)
                 .load(galleryItem.imageUrl)

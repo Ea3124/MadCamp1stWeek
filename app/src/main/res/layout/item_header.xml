@@ -1,31 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
-    android:layout_marginBottom="0dp">
+    android:layout_margin="4dp"
+    android:background="@drawable/item_header_background"> <!-- 둥근 배경 적용 -->
 
-    <!-- 단순히 예시용 텍스트 뷰 -->
+    <!-- 텍스트와 이미지를 감싸는 LinearLayout -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-    <TextView
-        android:id="@+id/tvSnipHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SNIP만의"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-    <!-- 단순히 예시용 텍스트 뷰 -->
-    <TextView
-        android:id="@+id/tvSnipHeader2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="생생한 후기들!"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical">
+
+        <!-- 이미지와 첫 번째 텍스트를 가로로 배치 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/smileIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/smile"
+                android:contentDescription="Header Icon"
+                android:layout_marginEnd="4dp" /> <!-- 이미지와 텍스트 사이 간격 -->
+
+            <TextView
+                android:id="@+id/tvSnipHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SNIP만의"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/pretendardbold" />
+        </LinearLayout>
+
+        <!-- 두 번째 텍스트 -->
+        <TextView
+            android:id="@+id/tvSnipHeader2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="생생한 후기들!"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/pretendardbold" />
     </LinearLayout>
 </FrameLayout>

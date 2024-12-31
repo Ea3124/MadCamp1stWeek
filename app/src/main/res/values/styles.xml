@@ -31,6 +31,14 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item> <!-- 원하는 둥글기 크기 -->
     </style>
+    <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar</item>
+        <item name="android:minHeight">48dp</item> <!-- 최소 높이 -->
+        <item name="android:maxHeight">48dp</item> <!-- 최대 높이 -->
+    </style>
+
+
+
 
 
 
