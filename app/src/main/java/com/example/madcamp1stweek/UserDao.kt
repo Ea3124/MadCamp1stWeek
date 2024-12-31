@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface UserDao {
@@ -20,4 +21,8 @@ interface UserDao {
     // ID 중복 확인
     @Query("SELECT * FROM users WHERE id = :id LIMIT 1")
     suspend fun getUserById(id: String): User?
+
+    // 사용자 업데이트: 로그인 카운트 등을 업데이트
+    @Update
+    suspend fun updateUser(user: User)
 }

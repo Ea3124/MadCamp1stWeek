@@ -8,5 +8,6 @@ data class User(
     @PrimaryKey(autoGenerate = true) val uid: Int = 0,
     val nickName: String,
     val id: String,
-    val password: String
+    val password: String,
+    var loginCount: Int =0 // 로그인 횟수를 추적
 )

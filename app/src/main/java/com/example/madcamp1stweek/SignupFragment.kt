@@ -89,7 +89,7 @@ class SignupFragment : DialogFragment() {
                     if (existingUser != null) {
                         Toast.makeText(requireContext(), "이미 사용 중인 아이디입니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        val newUser = User(nickName = nickName, id = id, password = password)
+                        val newUser = User(nickName = nickName, id = id, password = password, loginCount = 0)
                         withContext(Dispatchers.IO) {
                             userDao.insertUser(newUser)
                         }

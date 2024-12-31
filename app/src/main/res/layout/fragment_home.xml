@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:queryHint="검색..."
             app:iconifiedByDefault="false"
+            android:background="@android:color/transparent"
         />
 
     </LinearLayout>

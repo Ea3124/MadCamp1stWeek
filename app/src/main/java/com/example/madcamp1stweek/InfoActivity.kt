@@ -47,17 +47,30 @@ class InfoActivity : AppCompatActivity(), SignupFragment.SignupListener {
                         userDao.getUser(username, password)
                     }
                     if (user != null) {
-                        Toast.makeText(this@InfoActivity, "로그인 성공! 환영합니다, ${user.nickName}님.", Toast.LENGTH_SHORT).show()
-                        // MainActivity로 이동
-                        val intent = Intent(this@InfoActivity, MainActivity::class.java)
-                        // NickName을 MainActivity로 전달
-                        intent.putExtra("NICK_NAME", user.nickName)
-                        startActivity(intent)
-                        finish()
+                        if (user.loginCount == 0) {
+                            // 첫 로그인인 경우
+                            withContext(Dispatchers.IO) {
+                                userDao.updateUser(user.copy(loginCount = user.loginCount + 1))
+                            }
+                            val intent = Intent(this@InfoActivity, FirstActivity::class.java) // 첫 로그인 전용 Activity
+                            startActivity(intent)
+                        } else {
+                            // 첫 로그인이 아닌 경우
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(this@InfoActivity, "로그인 성공! 환영합니다, ${user.nickName}님.", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@InfoActivity, MainActivity::class.java)
+                                intent.putExtra("NICK_NAME", user.nickName)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
                     } else {
-                        Toast.makeText(this@InfoActivity, "아이디 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(this@InfoActivity, "아이디 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
+
             }
         }
 

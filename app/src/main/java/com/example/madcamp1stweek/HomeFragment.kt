@@ -36,7 +36,6 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.setBackgroundColor(Color.TRANSPARENT) // 루트 뷰 배경을 투명하게 설정
         return view
     }
 
@@ -52,9 +51,6 @@ class HomeFragment : Fragment() {
 
         // RecyclerView 참조
         recyclerViewShops = view.findViewById(R.id.recyclerViewShops)
-
-        // RecyclerView 배경 투명 설정
-        recyclerViewShops.setBackgroundColor(Color.TRANSPARENT)
 
         // 데이터 초기화
         shopList = generateDummyShops()
