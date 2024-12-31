@@ -1,15 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- activity_first.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
+    <!-- 환영 문구 (처음에만 보여지고, 애니메이션 후 사라짐) -->
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="첫 로그인을 환영합니다!"
-        android:textSize="24sp"
-        android:textColor="#000000" />
-</LinearLayout>
+        android:text="000님, 반가워요!"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/pretendardbold"
+        android:textSize="24dp"/>
+
+    <!-- 필터 질문/옵션을 감싸는 LinearLayout
+         처음에는 GONE 처리하여 환영문구 사라진 뒤 보이도록 함 -->
+    <LinearLayout
+        android:id="@+id/filterQuestionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="80dp">
+
+        <!-- 0번째 질문 (성별) -->
+        <TextView
+            android:id="@+id/q0text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="000님의 성별은 무엇인가요?"
+            android:textSize="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filter_question0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+            tools:listitem="@layout/item_filter_option"
+            tools:itemCount="2"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- 1번째 질문 (스타일) -->
+        <TextView
+            android:id="@+id/q1text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="원하는 스타일을 골라주세요!"
+            android:textSize="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filter_question1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+            tools:listitem="@layout/item_filter_option"
+            tools:itemCount="6"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- 2번째 질문 (서비스) -->
+        <TextView
+            android:id="@+id/q2text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="받고싶은 서비스를 선택해주세요:)"
+            android:textSize="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filter_question2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+            tools:listitem="@layout/item_filter_option"
+            tools:itemCount="6"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- 3번째 질문 (기타) -->
+        <TextView
+            android:id="@+id/q3text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="여기 중에서도 한 번 골라봐요!"
+            android:textSize="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filter_question3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+            tools:listitem="@layout/item_filter_option"
+            tools:itemCount="5"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+    <!-- (선택사항) 최종적으로 필터 적용 후 보여줄 리스트와 버튼(예시) -->
+    <LinearLayout
+        android:id="@+id/resultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp">
+
+        <!-- HairShop 리스트를 보여줄 RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hairShopListRv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:visibility="gone"
+            tools:listitem="@layout/item_hairshop"
+            />
+
+        <!-- MainActivity로 넘어가는 버튼 -->
+        <Button
+            android:id="@+id/btnGoMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="메인화면으로 가기"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

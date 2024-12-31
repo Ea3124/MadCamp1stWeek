@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="option"
+            type="com.example.madcamp1stweek.FilterOption" />
+    </data>
+    <TextView
+        android:id="@+id/item_filter_option_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="12dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="12dp"
+        android:background="@drawable/home_shop_border2"
+        android:text="@{option.optionName}"
+        tools:text="옵션"
+        android:fontFamily="@font/pretendardregular"
+        />
+</layout>
