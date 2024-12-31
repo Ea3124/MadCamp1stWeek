@@ -15,8 +15,6 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="12dp"
         android:background="@drawable/home_shop_border2"
-        android:text="@{option.optionName}"
-        tools:text="옵션"
         android:fontFamily="@font/pretendardregular"
         />
 </layout>

@@ -9,7 +9,13 @@ import com.example.madcamp1stweek.databinding.ItemFilterOptionBinding
 class FilterOptionsRVAdapter: RecyclerView.Adapter<FilterOptionsRVAdapter.ViewHolder>(){
 
     private var optionList = listOf<FilterOption>()
+    // '선택된 옵션'을 저장할 Set
     private val selectedOptions = mutableSetOf<FilterOption>() // 선택 상태 저장 (예시)
+
+    // 이 함수를 통해 외부에서 '선택된 옵션들'을 얻어갈 수 있도록
+    fun getSelectedOptions(): Set<FilterOption> {
+        return selectedOptions
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun addOption(optionList: List<FilterOption>) {

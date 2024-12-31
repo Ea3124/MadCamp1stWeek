@@ -118,6 +118,17 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnShowResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="결과보기"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_marginBottom="100dp"
+        />
+
     <!-- (선택사항) 최종적으로 필터 적용 후 보여줄 리스트와 버튼(예시) -->
     <LinearLayout
         android:id="@+id/resultLayout"
@@ -134,7 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:visibility="gone"
-            tools:listitem="@layout/item_hairshop"
+            tools:listitem="@layout/item_shop"
             />
 
         <!-- MainActivity로 넘어가는 버튼 -->
