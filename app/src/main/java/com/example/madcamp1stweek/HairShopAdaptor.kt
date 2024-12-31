@@ -22,7 +22,7 @@ class HairShopAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<HairShopAdapter.HairShopViewHolder>(), Filterable {
 
-    private var filteredShopList: MutableList<HairShop> = shopList
+    var filteredShopList: MutableList<HairShop> = shopList
 
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
@@ -68,12 +68,12 @@ class HairShopAdapter(
             holder.binding.imageViewHeart.setImageResource(R.drawable.ic_heart_empty) // 빈 하트
         }
 
-        // 전화 아이콘 클릭 리스너 설정
-        holder.binding.imageViewCall.setOnClickListener {
-            val dialIntent = Intent(Intent.ACTION_DIAL)
-            dialIntent.data = Uri.parse("tel:${shop.phoneNumber}")
-            context.startActivity(dialIntent)
-        }
+//        // 전화 아이콘 클릭 리스너 설정
+//        holder.binding.imageViewCall.setOnClickListener {
+//            val dialIntent = Intent(Intent.ACTION_DIAL)
+//            dialIntent.data = Uri.parse("tel:${shop.phoneNumber}")
+//            context.startActivity(dialIntent)
+//        }
 
         // 하트 아이콘 클릭 리스너
         holder.binding.imageViewHeart.setOnClickListener {

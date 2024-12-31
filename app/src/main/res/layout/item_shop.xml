@@ -8,8 +8,7 @@
     android:layout_gravity="center_horizontal"
     app:ignore="NamespaceTypo"
     app:cardCornerRadius="8dp"
-    android:background="@android:color/transparent"
-    >
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="328dp"
@@ -65,23 +64,23 @@
         </LinearLayout>
 
         <!-- 전화 아이콘 추가 -->
-        <ImageView
-            android:id="@+id/imageViewCall"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_call"
-            android:clickable="true"
-            android:focusable="true" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageViewCall"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/ic_call"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true" />-->
 
         <!-- 좋아요(하트) 아이콘 추가 -->
         <ImageView
             android:id="@+id/imageViewHeart"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/ic_heart_empty"
             android:clickable="true"
             android:focusable="true"
-            android:paddingStart="8dp" />
+            android:layout_marginEnd="8dp"/>
 
     </LinearLayout>
 

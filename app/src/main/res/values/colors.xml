@@ -7,6 +7,8 @@
     <color name="background_yellow">#F6F4EC</color>
     <color name="login_yellow">#FFD876</color>
     <color name="gray">#62626C</color>
-
+    <color name="green">#4CAF50</color>
+    <color name="green_start">#A8E6CF</color>
+    <color name="green_end">#56B4D3</color>
 
 </resources>

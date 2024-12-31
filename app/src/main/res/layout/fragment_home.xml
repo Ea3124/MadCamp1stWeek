@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@android:color/white">
+<!--    android:background="#FFFFFF"-->
 
     <!-- 상단 바: 이미지와 검색창을 양쪽 끝으로 배치 -->
     <LinearLayout
@@ -76,7 +77,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         tools:listitem="@layout/item_shop"
-        android:background="@android:color/transparent"
+        android:background="@android:color/white"
         />
 
 </LinearLayout>
