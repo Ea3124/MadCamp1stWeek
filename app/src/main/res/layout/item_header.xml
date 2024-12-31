@@ -20,13 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="-8dp">
 
             <ImageView
                 android:id="@+id/smileIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/smile"
+                android:src="@drawable/smile2"
                 android:contentDescription="Header Icon"
                 android:layout_marginEnd="4dp" /> <!-- 이미지와 텍스트 사이 간격 -->
 
@@ -37,7 +38,7 @@
                 android:text="SNIP만의"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="#62626C"
                 android:fontFamily="@font/pretendardbold" />
         </LinearLayout>
 
@@ -50,7 +51,7 @@
             android:text="생생한 후기들!"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="#62626C"
             android:fontFamily="@font/pretendardbold" />
     </LinearLayout>
 </FrameLayout>
