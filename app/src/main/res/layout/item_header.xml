@@ -4,13 +4,16 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:layout_margin="4dp"
-    android:background="@drawable/item_header_background"> <!-- 둥근 배경 적용 -->
+    android:background="@drawable/item_header_background"
+    > <!-- 둥근 배경 적용 -->
 
     <!-- 텍스트와 이미지를 감싸는 LinearLayout -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
 
         <!-- 이미지와 첫 번째 텍스트를 가로로 배치 -->
         <LinearLayout

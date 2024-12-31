@@ -1,37 +1,37 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/rounded_dialog_background"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/rounded_dialog_background">
+    android:padding="24dp"
+    android:layout_marginHorizontal="24dp">
 
     <!-- 아이콘과 텍스트를 수평으로 배치하는 LinearLayout 추가 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/smileIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_pen"
+            android:layout_marginEnd="8dp"
             android:contentDescription="Pen"
-            android:layout_marginEnd="8dp" />
+            android:src="@drawable/ic_pen" />
 
         <TextView
             android:id="@+id/reviewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="리뷰 작성하기"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:drawablePadding="8dp"
             android:fontFamily="@font/pretendardbold"
             android:gravity="center_vertical"
-            android:drawablePadding="8dp" />
+            android:text="리뷰 작성하기"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- 미용실 이름 선택 Spinner -->
@@ -40,9 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:padding="12dp"
-        android:fontFamily="@font/pretendardbold"
         android:background="@drawable/spinner_background"
+        android:fontFamily="@font/pretendardbold"
+        android:padding="12dp"
         android:popupBackground="@color/background_yellow" />
 
     <!-- 사진 설명 입력 -->
@@ -50,57 +50,57 @@
         android:id="@+id/editDescription"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:hint="솔직하게 리뷰를 작성해주세요!"
-        android:fontFamily="@font/pretendardbold"
-        android:padding="12dp"
-        android:textSize="16sp"
-        android:background="@drawable/edittext_background"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/pretendardregular"
         android:gravity="top"
-        android:scrollbars="vertical"
+        android:hint="솔직하게 리뷰를 작성해주세요!"
+        android:inputType="textMultiLine"
         android:overScrollMode="always"
-        android:inputType="textMultiLine" />
+        android:padding="12dp"
+        android:scrollbars="vertical"
+        android:textSize="16sp" />
 
     <!-- 별점 입력 -->
     <RatingBar
         android:id="@+id/ratingBar"
-        android:progressTint="#FFD876"
-        android:secondaryProgressTint="#5F6369"
-        android:backgroundTint="@color/deep_yellow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stepSize="1.0"
-        android:numStars="5"
-        android:rating="0"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/deep_yellow"
+        android:numStars="5"
+        android:progressTint="#FFD876"
+        android:rating="0"
+        android:secondaryProgressTint="#5F6369"
+        android:stepSize="1.0" />
 
     <!-- 버튼 영역 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="end"
+        android:orientation="horizontal"
         android:paddingEnd="1dp">
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소"
-            android:fontFamily="@font/pretendardbold"
-            android:textSize="14sp"
             android:background="@drawable/review_button_background"
-            android:textColor="#000000" />
+            android:fontFamily="@font/pretendardbold"
+            android:text="취소"
+            android:textColor="#FF0000"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추가"
-            android:fontFamily="@font/pretendardbold"
-            android:textSize="14sp"
             android:background="@drawable/review_button_background"
-            android:textColor="#000000" />
+            android:fontFamily="@font/pretendardbold"
+            android:text="추가"
+            android:textColor="#000000"
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>
