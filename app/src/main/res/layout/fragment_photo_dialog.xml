@@ -45,17 +45,34 @@
                 android:textStyle="bold"
                 android:gravity="start" />
 
-            <!-- 별점 -->
-            <TextView
-                android:id="@+id/photoRating"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⭐ 0.0"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/pretendardbold"
-                android:gravity="end"
-                android:textColor="@android:color/black" />
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 아이콘 -->
+                <ImageView
+                    android:id="@+id/starIcon"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/star"
+                    android:contentDescription="Star Icon"
+                    android:layout_marginEnd="2dp" />
+
+                <!-- 별점 텍스트 -->
+                <TextView
+                    android:id="@+id/photoRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 4.5"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pretendardbold"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:gravity="end"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- 사진 설명 -->
