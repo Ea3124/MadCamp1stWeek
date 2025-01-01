@@ -59,7 +59,7 @@ class InfoActivity : AppCompatActivity(), SignupFragment.SignupListener {
                             // 첫 로그인이 아닌 경우
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(this@InfoActivity, "로그인 성공! 환영합니다, ${user.nickName}님.", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@InfoActivity, MainActivity::class.java,)
+                                val intent = Intent(this@InfoActivity, MainActivity::class.java)
                                 intent.putExtra("NICK_NAME", user.nickName)
                                 startActivity(intent)
                                 finish()

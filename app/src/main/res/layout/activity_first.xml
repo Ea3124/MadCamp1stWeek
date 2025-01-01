@@ -5,7 +5,8 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <!-- 환영 문구 (처음에만 보여지고, 애니메이션 후 사라짐) -->
     <TextView
@@ -23,9 +24,8 @@
         android:id="@+id/filterQuestionsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:visibility="gone"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:layout_marginBottom="80dp">
 
         <!-- ScrollView의 유일한 자식으로 LinearLayout 추가 -->
@@ -33,8 +33,7 @@
             android:id="@+id/filterQuestionsLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
         <!-- 0번째 질문 (성별) -->
 <!--            <LinearLayout-->
@@ -49,8 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="000님의 성별은 무엇인가요?"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/pretendardbold"
             android:layout_marginTop="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -61,7 +61,7 @@
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             tools:listitem="@layout/item_filter_option"
             tools:itemCount="2"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
@@ -81,7 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="원하는 스타일을 골라주세요!"
-            android:textSize="16dp"
+            android:fontFamily="@font/pretendardbold"
+            android:textSize="20dp"
             android:visibility="gone"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
@@ -94,7 +95,7 @@
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             tools:listitem="@layout/item_filter_option"
             tools:itemCount="6"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
@@ -113,7 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="받고싶은 서비스를 선택해주세요:)"
-            android:textSize="16dp"
+            android:fontFamily="@font/pretendardbold"
+            android:textSize="20dp"
             android:visibility="gone"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
@@ -126,7 +128,7 @@
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             tools:listitem="@layout/item_filter_option"
             tools:itemCount="6"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
@@ -145,8 +147,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="여기 중에서도 한 번 골라봐요!"
+            android:fontFamily="@font/pretendardbold"
             android:visibility="gone"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
 
@@ -158,7 +161,7 @@
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             tools:listitem="@layout/item_filter_option"
             tools:itemCount="5"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
@@ -166,13 +169,19 @@
 
     <Button
         android:id="@+id/btnShowResult"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="결과보기"
+        android:fontFamily="@font/pretendardbold"
+        android:textSize="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
-        android:layout_marginBottom="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/shape_filter_selected"
         />
         </LinearLayout>
     </ScrollView>
@@ -236,7 +245,7 @@
             android:id="@+id/ResultList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:paddingLeft="4dp"
             android:layout_marginBottom="4dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -269,14 +278,29 @@
             tools:listitem="@layout/item_shop"
             />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnGoMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_filter_selected"
+            android:visibility="gone">
+
         <!-- MainActivity로 넘어가는 버튼 -->
         <Button
-            android:id="@+id/btnGoMain"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="메인화면으로 가기"
-            android:visibility="gone"
-            android:layout_marginTop="8dp"/>
+            android:background="@drawable/signup_btn_1"
+            android:fontFamily="@font/pretendardbold"
+            android:textSize="20dp"
+
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

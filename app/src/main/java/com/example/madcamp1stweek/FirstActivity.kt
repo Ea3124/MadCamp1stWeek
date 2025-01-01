@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.view.animation.AnimationSet
 import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -217,7 +218,9 @@ class FirstActivity : AppCompatActivity() {
 
         // “메인화면으로” 버튼 클릭 리스너
         binding.btnGoMain.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this@FirstActivity, MainActivity::class.java)
+            intent.putExtra("NICK_NAME", nickName)  // 필요한 데이터 전달
+            startActivity(intent)
             finish()
         }
     }
@@ -277,13 +280,30 @@ class FirstActivity : AppCompatActivity() {
             Animation.RELATIVE_TO_PARENT, 1f,
             Animation.RELATIVE_TO_PARENT, 0f
         ).apply {
-            duration = 500
-            fillAfter = true
+            duration = 500 // 애니메이션 지속 시간 (밀리초 단위)
+            fillAfter = true // 애니메이션 종료 후 상태 유지
         }
 
+        // 애니메이션 리스너 추가
+        slideIn.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {}
+
+            override fun onAnimationEnd(animation: Animation?) {
+                // 애니메이션이 끝난 후 스크롤 수행
+                binding.filterQuestionsLayout.post {
+                    // 새로 표시된 뷰의 위치로 스크롤
+                    binding.filterQuestionsLayout.smoothScrollTo(0, view.top)
+                }
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {}
+        })
+
+        // 뷰를 보이도록 설정하고 애니메이션 시작
         view.visibility = View.VISIBLE
         view.startAnimation(slideIn)
     }
+
 
 
     /** 질문/옵션 리사이클러뷰 설정 */
