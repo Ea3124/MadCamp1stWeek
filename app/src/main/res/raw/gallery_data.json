@@ -2,8 +2,8 @@
   {
     "index": 1,
     "imageUrl": "https://postfiles.pstatic.net/MjAyNDEyMzFfMTU1/MDAxNzM1NjI5OTE3MjE4.R9BPK9myWuoXp_Jfp6tD-yhwQmY4A1H4kupz4c6GQi4g.6QZY5euW73zsXgwj-fmYqrZrwfB6zNfBWmEhADcOiU4g.JPEG/IMG_9502.jpg?type=w966",
-    "description": "직원들이 정말 친절했고, 원하는 스타일을 정확히 만들어 주셨어요. 샴푸 서비스도 아주 만족스러웠고, 시설도 깔끔했습니다.",
-    "rating": 2.0,
+    "description": "군입대 전 최고의 선택이었어요, 원하는 스타일을 정확히 만들어 주셨어요. 샴푸 서비스도 아주 만족스러웠고, 시설도 깔끔했습니다.",
+    "rating": 5.0,
     "hairshopName": "야도헤어 봉명점"
   },
   {
@@ -24,119 +24,86 @@
     "index": 4,
     "imageUrl": "https://postfiles.pstatic.net/MjAyNDEyMzFfMjU4/MDAxNzM1NjMwMjY1NDIy.All93vaNBYmFa2UGPLv07e-wjYsCulEEE2ApM-c-XGAg.o3a_-b_4yShHk-PsS-tw6gsVVAmnOgqpCpHg2zJMZPUg.JPEG/KakaoTalk_Photo_2024-12-31-16-30-27.jpg?type=w966",
     "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
+    "rating": 2.0,
     "hairshopName": "피즈피헤어 봉명점"
   },
   {
     "index": 5,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
+    "imageUrl": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201706/05/d7338f63-1878-43ad-a9da-0edc67797ff9.jpg",
+    "description": "디자이너분의 섬세한 손길 덕분에 원하는 스타일을 완벽하게 얻을 수 있었습니다. 분위기도 편안해서 기분 좋은 시간을 보냈어요.",
     "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "hairshopName": "LSJ뷰티헤어 유성본점"
   },
   {
     "index": 6,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Faker_2020_interview.jpg/225px-Faker_2020_interview.jpg",
     "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
     "rating": 5.0,
     "hairshopName": "피즈피헤어 봉명점"
   },
   {
     "index": 7,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://image.news1.kr/system/photos/2020/8/8/4327875/high.jpg/dims/optimize",
+    "description": "친절한 직원들과 쾌적한 환경 덕분에 만족스러운 방문이었습니다. 스타일링도 훌륭했고, 다음에도 꼭 다시 방문하고 싶어요.",
+    "rating": 4.5,
+    "hairshopName": "킷키헤어 대전봉명점"
   },
   {
     "index": 8,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://dispatch.cdnser.be/wp-content/uploads/2019/12/ally_2019-12-03_22-22-13_069700.jpg",
+    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 매우 친절했고, 결과물도 기대 이상이었습니다.",
+    "rating": 4.0,
+    "hairshopName": "아논헤어 대전봉명점"
   },
   {
     "index": 9,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://dispatch.cdnser.be/wp-content/uploads/2017/06/20170607001931_worst-hairstyles-12.jpg",
+    "description": "헤어 디자이너분의 전문성이 돋보였습니다. 원하는 스타일을 정확히 구현해 주셔서 매우 만족스러웠어요.",
+    "rating": 4.8,
+    "hairshopName": "디어준헤어"
   },
   {
     "index": 10,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
+    "imageUrl": "https://thumbnews.nateimg.co.kr/view610///onimg.nate.com/orgImg/ss/2013/03/14/20130314_0500041154583_2.jpg",
+    "description": "매번 예약할 때마다 빠르고 정확하게 처리해주셔서 너무 편리했습니다. 스타일링도 완벽하게 잘해주셔서 항상 만족스럽습니다.",
     "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "hairshopName": "제이블리붙임머리"
   },
   {
     "index": 11,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
+    "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMzEwMDNfMTk4/MDAxNjk2MzE3NTIxNDY0.0eZkjQh72ppXPVCdaZbLhxNkzDGhWQsTrtMi9hwP47Yg.QEUEU7FrOAxzrS2JH3XXsTwHtwtUKTkhsZ7QMZDfPOcg.JPEG.pmc970602/IMG_3079.JPG?type=w800",
+    "description": "헤어 스타일이 너무 마음에 들어서 주변 사람들에게도 추천하고 있어요. 디자이너분의 친절함과 전문성이 돋보입니다.",
     "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "hairshopName": "영롱헤어 충대점"
   },
   {
     "index": 12,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://file2.nocutnews.co.kr/newsroom/image/2024/07/16/202407161131233681_0.jpg",
+    "description": "전반적으로 만족스러운 경험이었지만, 예약 시스템이 조금 더 효율적이면 좋겠습니다. 그래도 결과물은 정말 훌륭했어요.",
+    "rating": 4.2,
+    "hairshopName": "리소헤어 충남대점"
   },
   {
     "index": 13,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
+    "imageUrl": "https://image.kmib.co.kr/online_image/2021/1019/2021101915551973462_1634626519_0016377856.jpg",
+    "description": "헤어 스타일이 너무 마음에 들어서 주변 사람들에게도 추천하고 있어요. 디자이너분의 친절함과 전문성이 돋보입니다.",
     "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "hairshopName": "에이프린 헤어 봉명점"
   },
   {
     "index": 14,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6XfD6Gp8pKYVdG-nEAcCDye993kBZjyytkQ&s",
+    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 만족스러웠습니다. 개선될 여지가 있어요.",
+    "rating": 3.5,
+    "hairshopName": "제이블리붙임머리"
   },
   {
     "index": 15,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
-  },
-  {
-    "index": 16,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
-  },
-  {
-    "index": 17,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
-  },
-  {
-    "index": 18,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
-  },
-  {
-    "index": 19,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
-  },
-  {
-    "index": 20,
-    "imageUrl": "https://news.nateimg.co.kr/orgImg/ts/2020/12/03/849092_576856_322.jpg",
-    "description": "예약 시간이 조금 지연돼서 기다려야 했어요. 하지만 직원들은 친절하고 결과물도 괜찮았습니다. 시간 관리만 조금 개선되면 더 좋을 것 같아요",
-    "rating": 5.0,
-    "hairshopName": "피즈피헤어 봉명점"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaQ_2KcX96YOv6OYv3RIdKHAmge0Yudf6zZA&s",
+    "description": "전반적으로 만족스러운 경험이었지만, 예약 시스템이 조금 더 효율적이면 좋겠습니다. 그래도 결과물은 정말 훌륭했어요.",
+    "rating": 4.2,
+    "hairshopName": "영롱헤어 충대점"
   }
+
+
 ]
