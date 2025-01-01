@@ -433,6 +433,7 @@ class FirstActivity : AppCompatActivity() {
         showViewWithSlideIn(binding.resultLayout)
 //        binding.btnGoMain.visibility = View.VISIBLE
         showViewWithSlideIn(binding.btnGoMain)
+        showViewWithSlideIn(binding.btnGoMainC)
 
         // 어댑터에 데이터 업데이트
         val hairShopAdapter = HairShopAdapter(filteredHairShops.toMutableList(), this)

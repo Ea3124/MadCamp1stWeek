@@ -31,7 +31,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pretendardregular"
-        android:text="LSJ뷰티헤어"
+        android:gravity="center_horizontal"
+        android:text="킷키헤어"
+        android:layout_centerHorizontal="true"
         android:textSize="16dp"
         android:layout_marginTop="12dp"/>
 </LinearLayout>

@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="80dp">
 
         <!-- ScrollView의 유일한 자식으로 LinearLayout 추가 -->
@@ -167,6 +167,18 @@
 
 <!--            </LinearLayout>-->
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnShowResultC"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_filter_selected"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="40dp"
+        android:visibility="gone"
+        >
     <Button
         android:id="@+id/btnShowResult"
         android:layout_width="match_parent"
@@ -177,12 +189,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/shape_filter_selected"
-        />
+        android:background="@drawable/signup_btn_1"
+        tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -225,7 +236,7 @@
     <LinearLayout
         android:id="@+id/resultLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="740dp"
         android:orientation="vertical"
         android:visibility="gone"
         android:layout_margin="16dp">
@@ -273,32 +284,32 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hairShopListRv"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:visibility="gone"
+            android:layout_height="520dp"
             tools:listitem="@layout/item_shop"
+            android:visibility="gone"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnGoMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btnGoMainC"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:background="@drawable/shape_filter_selected"
-            android:visibility="gone">
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            >
+<!--            >-->
 
         <!-- MainActivity로 넘어가는 버튼 -->
         <Button
-
+            android:id="@+id/btnGoMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="메인화면으로 가기"
             android:background="@drawable/signup_btn_1"
             android:fontFamily="@font/pretendardbold"
             android:textSize="20dp"
-
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginBottom="4dp"
+            tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
