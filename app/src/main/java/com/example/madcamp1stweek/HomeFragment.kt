@@ -197,17 +197,24 @@ class HomeFragment : Fragment() {
         return mutableListOf(
             HairShop("킷키헤어 대전봉명점", "0507-1427-0953", R.drawable.kitk_hair_logo, 36.358, 127.353,
                 providedOptions = setOf(
-                FilterOption.MAN,         // 남성 고객 가능
-                FilterOption.TRENDY,      // 트렌디한 스타일
-                FilterOption.GGOMGGOM,    // 꼼꼼한 시술
-                FilterOption.CLEAN_ROOM  // 리뷰가 많음
-            )),
+                    FilterOption.MAN,         // 남성 고객 가능
+                    FilterOption.TRENDY,      // 트렌디한 스타일
+                    FilterOption.GGOMGGOM,    // 꼼꼼한 시술
+                    FilterOption.CLEAN_ROOM  // 리뷰가 많음
+                )),
+            HairShop("니니티헤어 궁동점", "0507-1410-5856", R.drawable.ninity_logo, 36.363, 127.353,
+                providedOptions = setOf(
+                    FilterOption.MAN,         // 남성 고객 가능
+                    FilterOption.TRENDY,      // 트렌디한 스타일
+                    FilterOption.GGOMGGOM,    // 꼼꼼한 시술
+                    FilterOption.CLEAN_ROOM  // 리뷰가 많음
+                )),
             HairShop("LSJ뷰티헤어 유성본점", "0507-1435-2330", R.drawable.lsj_logo, 36.362, 127.350,
                 providedOptions = setOf(
-                    FilterOption.WOMAN,         // 남성 고객 가능
-                    FilterOption.LUXURIOUS,      // 트렌디한 스타일
+                    FilterOption.MAN,         // 남성 고객 가능
+                    FilterOption.TRENDY,      // 트렌디한 스타일
                     FilterOption.GGOMGGOM,    // 꼼꼼한 시술
-                    FilterOption.MANY_REVIEW  // 리뷰가 많음
+                    FilterOption.CLEAN_ROOM  // 리뷰가 많음
                 )),
             HairShop("야도헤어 봉명점", "0507-1407-8963", R.drawable.yaddo_logo, 36.353, 127.377,
                 providedOptions = setOf(
@@ -222,13 +229,6 @@ class HomeFragment : Fragment() {
                     FilterOption.TRENDY,      // 트렌디한 스타일
                     FilterOption.NO_TALK,    // 꼼꼼한 시술
                     FilterOption.CLEAN_ROOM  // 리뷰가 많음
-                )),
-            HairShop("니니티헤어 궁동점", "0507-1410-5856", R.drawable.ninity_logo, 36.363, 127.353,
-                providedOptions = setOf(
-                    FilterOption.MAN,         // 남성 고객 가능
-                    FilterOption.LUXURIOUS,      // 트렌디한 스타일
-                    FilterOption.GGOMGGOM,    // 꼼꼼한 시술
-                    FilterOption.MANY_REVIEW  // 리뷰가 많음
                 )),
             HairShop("리소헤어 충남대점", "0507-1331-2465", R.drawable.liso_logo, 36.362, 127.350,
                 providedOptions = setOf(
@@ -251,12 +251,12 @@ class HomeFragment : Fragment() {
                     FilterOption.GGOMGGOM,    // 꼼꼼한 시술
                     FilterOption.MANY_REVIEW  // 리뷰가 많음
                 )),
-            HairShop("CM3헤어모드 궁동 점", "0507-1408-4149", R.drawable.cm3_logo, 36.359, 127.346,
+            HairShop("CM3헤어모드 궁동 점", "0507-1408-4149", R.drawable.cm3_logo, 36.362,127.350,
                 providedOptions = setOf(
                     FilterOption.MAN,         // 남성 고객 가능
                     FilterOption.TRENDY,      // 트렌디한 스타일
                     FilterOption.GGOMGGOM,    // 꼼꼼한 시술
-                    FilterOption.MANY_REVIEW  // 리뷰가 많음
+                    FilterOption.CLEAN_ROOM  // 리뷰가 많음
                 )),
             HairShop("에이프린 헤어 봉명점", "0507-1360-1054", R.drawable.aprin_logo, 36.359, 127.346,
                 providedOptions = setOf(
