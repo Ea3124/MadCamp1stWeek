@@ -5,7 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/rounded_dialog_background"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="12dp"
+    android:paddingTop="24dp"
     android:layout_marginHorizontal="24dp">
 
     <!-- 아이콘과 텍스트를 수평으로 배치하는 LinearLayout -->
