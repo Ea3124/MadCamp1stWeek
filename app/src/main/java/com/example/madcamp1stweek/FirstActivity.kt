@@ -1,9 +1,13 @@
 package com.example.madcamp1stweek
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -11,7 +15,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.madcamp1stweek.databinding.ActivityFirstBinding
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -24,15 +27,32 @@ class FirstActivity : AppCompatActivity() {
     // 질문 별로 사용할 RecyclerView의 Adapter들
     private lateinit var adapterList: List<FilterOptionsRVAdapter>
 
-    // HairShop 전체 리스트 (예시)
+    // HairShop 전체 리스트
     private lateinit var allHairShops: MutableList<HairShop>
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private val likedShopsKey = "liked_shops"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // DataBindingUtil을 통해 binding 초기화
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_first) as ActivityFirstBinding
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_first)
 
+        // 닉네임 받기
+        val nickName = intent.getStringExtra("NICK_NAME") ?: "사용자"
+        binding.welcomeText.text = "$nickName 님, 반가워요"
+
+        // 로그 출력
+        Log.d("FirstActivity", "Received NickName: $nickName")
+
+        // (1) 질문 레이아웃을 처음엔 GONE 처리
+        binding.filterQuestionsLayout.visibility = View.GONE
+
+        // “결과보기” 버튼도 처음에는 숨김
+        binding.btnShowResult.visibility = View.GONE
+
+        // 샘플로 사용할 allHairShops 초기화
         allHairShops = mutableListOf(
             HairShop("킷키헤어 대전봉명점", "0507-1427-0953", R.drawable.kitk_hair_logo, 36.358, 127.353,
                 providedOptions = setOf(
@@ -176,13 +196,21 @@ class FirstActivity : AppCompatActivity() {
                 ))
         )
 
+        // SharedPreferences 초기화
+        sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+
+        // 저장된 '좋아요' 상태 불러오기
+        val likedShops = sharedPreferences.getStringSet(likedShopsKey, mutableSetOf())?.toMutableSet() ?: mutableSetOf()
+
+        // (2) onCreate()에서 바로 setFilterOptions() 호출해 adapterList 초기화
+        setFilterOptions()
+
         // 환영문구 애니메이션 시작
         startWelcomeAnimation()
 
-        // “다음으로” 버튼 클릭 리스너
+        // “결과보기” 버튼 클릭 리스너
         binding.btnShowResult.setOnClickListener {
-            val selectedSet = collectAllSelectedOptions()
-            showHairShopList(selectedSet)
+            showLoadingAndThenShowResult()
         }
 
         // “메인화면으로” 버튼 클릭 리스너
@@ -190,6 +218,20 @@ class FirstActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+    }
+
+    fun updateLikedShops(hairShopId: String, isLiked: Boolean) {
+        val editor = sharedPreferences.edit()
+        val likedShops = sharedPreferences.getStringSet(likedShopsKey, mutableSetOf()) ?: mutableSetOf()
+
+        if (isLiked) {
+            likedShops.add(hairShopId)
+        } else {
+            likedShops.remove(hairShopId)
+        }
+
+        editor.putStringSet(likedShopsKey, likedShops)
+        editor.apply() // 비동기로 데이터 저장
     }
 
     private fun startWelcomeAnimation() {
@@ -210,11 +252,12 @@ class FirstActivity : AppCompatActivity() {
                     override fun onAnimationEnd(animation: Animation?) {
                         // 환영문구 안보이게
                         binding.welcomeText.visibility = View.GONE
-                        // 필터 질문 레이아웃 VISIBLE
+
+                        // (3) 여기서 필터 질문 레이아웃을 VISIBLE로 변경
                         binding.filterQuestionsLayout.visibility = View.VISIBLE
-                        // 필터 RecyclerView들 셋업
-                        binding.btnShowResult.visibility = View.VISIBLE // 버튼 표시
-                        setFilterOptions()
+
+                        // 마지막 질문까지 한 번도 선택되지 않았을 수도 있으므로,
+                        // "결과보기" 버튼은 여기서가 아니라 '순차질문 로직'에서 제어해도 됨.
                     }
                     override fun onAnimationRepeat(animation: Animation?) {}
                 })
@@ -225,35 +268,81 @@ class FirstActivity : AppCompatActivity() {
 
     /** 질문/옵션 리사이클러뷰 설정 */
     private fun setFilterOptions() {
-        // 1) GENDER, STYLE, SERVICE, ETC 순서대로 필터 옵션 리스트화
-        val filterOptionList = FilterOption.getOptionsSortedByFilterType()
+        // 필터 타입별로 그룹화된 옵션 리스트 가져오기
+        val filterOptionGroups = FilterOption.getOptionsSortedByFilterType()
 
-        // 2) 각 질문마다 FilterOptionsRVAdapter 할당
-        adapterList = List(filterOptionList.size) { FilterOptionsRVAdapter() }
+        // 각 그룹별로 Adapter 설정 (예시)
+        adapterList = filterOptionGroups.mapIndexed { index, groupOptions ->
+            val selectionMode = groupOptions.firstOrNull()?.selectionMode ?: SelectionMode.MULTIPLE
+            FilterOptionsRVAdapter(selectionMode, index).apply {
+                addOption(groupOptions)
 
-        // 3) activity_first.xml에 정의된 RecyclerView 리스트
-        val recyclerViewList = listOf(
-            binding.filterQuestion0,
-            binding.filterQuestion1,
-            binding.filterQuestion2,
-            binding.filterQuestion3
-        )
+                // 필터 선택 콜백 → 다음 질문 or 결과버튼 노출
+                onFilterSelectionListener = object : FilterOptionsRVAdapter.OnFilterSelectionListener {
+                    override fun onFilterSelected(questionIndex: Int, hasSelection: Boolean) {
+                        if (!hasSelection) return
 
-        // 4) RecyclerView에 Adapter 및 LayoutManager 연결
-        recyclerViewList.forEachIndexed { index, rv ->
-            rv.layoutManager = FlexboxLayoutManager(this).apply {
+                        // 질문별 다음 UI 오픈
+                        when (questionIndex) {
+                            0 -> binding.question0.visibility = View.VISIBLE
+                            1 -> binding.question1.visibility = View.VISIBLE
+                            2 -> binding.question2.visibility = View.VISIBLE
+                            3 -> binding.question3.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+        }
+
+        // 질문별 RecyclerView
+        binding.filterQuestion0.apply {
+            layoutManager = FlexboxLayoutManager(context).apply {
                 flexWrap = FlexWrap.WRAP
                 flexDirection = FlexDirection.ROW
             }
-            rv.adapter = adapterList[index]
+            adapter = adapterList[0]
+            visibility = View.VISIBLE // 첫 번째 질문은 처음부터 보여주고 싶다면 VISIBLE
         }
 
-        // 5) Adapter에 데이터 추가
-        adapterList.forEachIndexed { index, adapter ->
-            adapter.addOption(filterOptionList[index])
+        binding.filterQuestion1.apply {
+            layoutManager = FlexboxLayoutManager(context).apply {
+                flexWrap = FlexWrap.WRAP
+                flexDirection = FlexDirection.ROW
+            }
+            adapter = adapterList[1]
+            visibility = View.GONE
+        }
+
+        binding.filterQuestion2.apply {
+            layoutManager = FlexboxLayoutManager(context).apply {
+                flexWrap = FlexWrap.WRAP
+                flexDirection = FlexDirection.ROW
+            }
+            adapter = adapterList[2]
+            visibility = View.GONE
+        }
+
+        binding.filterQuestion3.apply {
+            layoutManager = FlexboxLayoutManager(context).apply {
+                flexWrap = FlexWrap.WRAP
+                flexDirection = FlexDirection.ROW
+            }
+            adapter = adapterList[3]
+            visibility = View.GONE
         }
     }
 
+    private fun showLoadingAndThenShowResult() {
+        // 로딩 레이아웃 표시
+        binding.loadingLayout.visibility = View.VISIBLE
+
+        // 2초 후에 로딩 레이아웃 숨기고 결과 표시
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.loadingLayout.visibility = View.GONE
+            val selectedSet = collectAllSelectedOptions()
+            showHairShopList(selectedSet)
+        }, 2000)
+    }
 
     /** 모든 질문(RecyclerView)에서 사용자가 선택한 옵션들을 하나로 모아서 Set으로 반환 */
     private fun collectAllSelectedOptions(): Set<FilterOption> {
@@ -266,7 +355,12 @@ class FirstActivity : AppCompatActivity() {
 
     /** HairShop 리스트 필터링 후 화면에 보여주기 */
     private fun showHairShopList(selectedFilters: Set<FilterOption>) {
-        // 1) 필터 로직
+
+        // 필터 질문 레이아웃 숨기기
+        binding.filterQuestionsLayout.visibility = View.GONE
+        binding.btnShowResult.visibility = View.GONE
+
+        // (1) 필터 로직
         val filteredHairShops = allHairShops.filter { shop ->
             // 선택된 필터 옵션이 shop 제공 옵션에 모두 포함되는지 확인
             selectedFilters.all { it in shop.providedOptions }
@@ -275,20 +369,27 @@ class FirstActivity : AppCompatActivity() {
         // 필터 결과가 비어 있더라도 레이아웃을 보여줘야 함
         if (filteredHairShops.isEmpty()) {
             Toast.makeText(this, "필터에 맞는 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+            binding.hairShopListRv.visibility = View.GONE
+            binding.ResultList.visibility = View.GONE
+            binding.noResultsText.visibility = View.VISIBLE
+        } else {
+            binding.hairShopListRv.visibility = View.VISIBLE
+            binding.ResultList.visibility = View.VISIBLE
+            binding.noResultsText.visibility = View.GONE
+
+            binding.hairShopListRv.layoutManager = LinearLayoutManager(this)
+            val hairShopAdapter = HairShopAdapter(filteredHairShops.toMutableList(), this)
+            binding.hairShopListRv.adapter = hairShopAdapter
         }
 
-        // 2) 하단 resultLayout 영역 보이기
+        // 하단 resultLayout 영역 보이기
         binding.resultLayout.visibility = View.VISIBLE
-        binding.hairShopListRv.visibility = View.VISIBLE
         binding.btnGoMain.visibility = View.VISIBLE
 
-        binding.hairShopListRv.layoutManager = LinearLayoutManager(this) // LayoutManager 설정
-        // 3) hairShopListRv에 어댑터 연결
-        val hairShopAdapter = HairShopAdapter(filteredHairShops.toMutableList(), this)
-        binding.hairShopListRv.adapter = hairShopAdapter
-
         // 어댑터에 데이터 업데이트
+        val hairShopAdapter = HairShopAdapter(filteredHairShops.toMutableList(), this)
+        binding.hairShopListRv.layoutManager = LinearLayoutManager(this)
+        binding.hairShopListRv.adapter = hairShopAdapter
         hairShopAdapter.updateShops(filteredHairShops.toMutableList())
     }
-
 }
