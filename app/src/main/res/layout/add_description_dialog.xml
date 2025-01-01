@@ -40,11 +40,11 @@
     <Spinner
         android:id="@+id/hairshopSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/spinner_background"
         android:fontFamily="@font/pretendardbold"
-        android:padding="12dp"
+        android:padding="0dp"
         android:popupBackground="@color/background_yellow" />
 
     <!-- 사진 설명 입력 -->
