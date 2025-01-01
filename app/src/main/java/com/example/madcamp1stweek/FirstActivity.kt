@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -42,6 +43,7 @@ class FirstActivity : AppCompatActivity() {
         // 닉네임 받기
         val nickName = intent.getStringExtra("NICK_NAME") ?: "사용자"
         binding.welcomeText.text = "$nickName 님, 반가워요"
+        binding.q0text.text = "$nickName 님의 성별은 무엇인가요?"
 
         // 로그 출력
         Log.d("FirstActivity", "Received NickName: $nickName")
@@ -266,6 +268,24 @@ class FirstActivity : AppCompatActivity() {
         }, 2000) // 2초 동안 유지
     }
 
+    private fun showViewWithSlideIn(view: View) {
+        if (view.visibility == View.VISIBLE) return
+
+        val slideIn = TranslateAnimation(
+            Animation.RELATIVE_TO_PARENT, 0f,
+            Animation.RELATIVE_TO_PARENT, 0f,
+            Animation.RELATIVE_TO_PARENT, 1f,
+            Animation.RELATIVE_TO_PARENT, 0f
+        ).apply {
+            duration = 500
+            fillAfter = true
+        }
+
+        view.visibility = View.VISIBLE
+        view.startAnimation(slideIn)
+    }
+
+
     /** 질문/옵션 리사이클러뷰 설정 */
     private fun setFilterOptions() {
         // 필터 타입별로 그룹화된 옵션 리스트 가져오기
@@ -284,10 +304,14 @@ class FirstActivity : AppCompatActivity() {
 
                         // 질문별 다음 UI 오픈
                         when (questionIndex) {
-                            0 -> binding.question0.visibility = View.VISIBLE
-                            1 -> binding.question1.visibility = View.VISIBLE
-                            2 -> binding.question2.visibility = View.VISIBLE
-                            3 -> binding.question3.visibility = View.VISIBLE
+                            0 -> {showViewWithSlideIn(binding.filterQuestion1)
+                                showViewWithSlideIn(binding.q1text)}
+                            1 -> {showViewWithSlideIn(binding.filterQuestion2)
+                                showViewWithSlideIn(binding.q2text)}
+                            2 -> {showViewWithSlideIn(binding.filterQuestion3)
+                                showViewWithSlideIn(binding.q3text)}
+                            3 -> showViewWithSlideIn(binding.btnShowResult)
+
                         }
                     }
                 }
@@ -371,10 +395,12 @@ class FirstActivity : AppCompatActivity() {
             Toast.makeText(this, "필터에 맞는 결과가 없습니다.", Toast.LENGTH_SHORT).show()
             binding.hairShopListRv.visibility = View.GONE
             binding.ResultList.visibility = View.GONE
-            binding.noResultsText.visibility = View.VISIBLE
+            showViewWithSlideIn(binding.noResultsText)
         } else {
-            binding.hairShopListRv.visibility = View.VISIBLE
-            binding.ResultList.visibility = View.VISIBLE
+//            binding.hairShopListRv.visibility = View.VISIBLE
+            showViewWithSlideIn(binding.hairShopListRv)
+//            binding.ResultList.visibility = View.VISIBLE
+            showViewWithSlideIn(binding.ResultList)
             binding.noResultsText.visibility = View.GONE
 
             binding.hairShopListRv.layoutManager = LinearLayoutManager(this)
@@ -383,8 +409,10 @@ class FirstActivity : AppCompatActivity() {
         }
 
         // 하단 resultLayout 영역 보이기
-        binding.resultLayout.visibility = View.VISIBLE
-        binding.btnGoMain.visibility = View.VISIBLE
+//        binding.resultLayout.visibility = View.VISIBLE
+        showViewWithSlideIn(binding.resultLayout)
+//        binding.btnGoMain.visibility = View.VISIBLE
+        showViewWithSlideIn(binding.btnGoMain)
 
         // 어댑터에 데이터 업데이트
         val hairShopAdapter = HairShopAdapter(filteredHairShops.toMutableList(), this)

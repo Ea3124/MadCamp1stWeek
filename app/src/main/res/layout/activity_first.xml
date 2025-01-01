@@ -37,11 +37,12 @@
             android:padding="16dp">
 
         <!-- 0번째 질문 (성별) -->
-            <LinearLayout
-                android:id="@+id/question0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/question0"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:orientation="vertical">-->
 
         <TextView
             android:id="@+id/q0text"
@@ -64,15 +65,16 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         <!-- 1번째 질문 (스타일) -->
 
-            <LinearLayout
-                android:id="@+id/question1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/question1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:orientation="vertical">-->
 
         <TextView
             android:id="@+id/q1text"
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:text="원하는 스타일을 골라주세요!"
             android:textSize="16dp"
+            android:visibility="gone"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
 
@@ -95,21 +98,23 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         <!-- 2번째 질문 (서비스) -->
 
-            <LinearLayout
-                android:id="@+id/question2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/question2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:orientation="vertical">-->
         <TextView
             android:id="@+id/q2text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="받고싶은 서비스를 선택해주세요:)"
             android:textSize="16dp"
+            android:visibility="gone"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
 
@@ -125,20 +130,22 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         <!-- 3번째 질문 (기타) -->
 
-            <LinearLayout
-                android:id="@+id/question3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/question3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:orientation="vertical">-->
         <TextView
             android:id="@+id/q3text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="여기 중에서도 한 번 골라봐요!"
+            android:visibility="gone"
             android:textSize="16dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"/>
@@ -155,7 +162,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"/>
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
     <Button
         android:id="@+id/btnShowResult"
