@@ -202,14 +202,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
+        android:gravity="center"
         android:visibility="gone"
-        android:gravity="center">
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="280dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:visibility="visible">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -222,14 +226,14 @@
                 android:id="@+id/finding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="추천할 미용실을 고르고 있어요"
                 android:fontFamily="@font/pretendardbold"
-                android:textSize="20dp"/>
+                android:text="추천할 미용실을 고르고 있어요"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
 
-</FrameLayout>
+    </FrameLayout>
 
 
     <!-- (선택사항) 최종적으로 필터 적용 후 보여줄 리스트와 버튼(예시) -->

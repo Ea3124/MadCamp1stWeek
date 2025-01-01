@@ -54,6 +54,7 @@ class FirstActivity : AppCompatActivity() {
 
         // “결과보기” 버튼도 처음에는 숨김
         binding.btnShowResult.visibility = View.GONE
+        binding.btnShowResultC.visibility = View.GONE
 
         // 샘플로 사용할 allHairShops 초기화
         allHairShops = mutableListOf(
@@ -330,7 +331,10 @@ class FirstActivity : AppCompatActivity() {
                                 showViewWithSlideIn(binding.q2text)}
                             2 -> {showViewWithSlideIn(binding.filterQuestion3)
                                 showViewWithSlideIn(binding.q3text)}
-                            3 -> showViewWithSlideIn(binding.btnShowResult)
+                            3 -> {
+                                showViewWithSlideIn(binding.btnShowResult)
+                                showViewWithSlideIn(binding.btnShowResultC)
+                            }
 
                         }
                     }
@@ -431,6 +435,7 @@ class FirstActivity : AppCompatActivity() {
         // 하단 resultLayout 영역 보이기
 //        binding.resultLayout.visibility = View.VISIBLE
         showViewWithSlideIn(binding.resultLayout)
+//        btnShowResultC
 //        binding.btnGoMain.visibility = View.VISIBLE
         showViewWithSlideIn(binding.btnGoMain)
         showViewWithSlideIn(binding.btnGoMainC)
