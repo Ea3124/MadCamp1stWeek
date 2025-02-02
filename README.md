@@ -30,6 +30,10 @@
 
 ---
 
+# Design
+
+<img src="readme_images/1st_design.png">
+
 # Introduction
 
 <aside>
@@ -93,8 +97,6 @@
 🔹 생성된 DB내에서 `User` 정보와 일치시 
 
 `MainActivity` 접근 가능
-
-![login_signup-ezgif.com-video-to-gif-converter.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/36f259fe-8d83-413d-9d86-a2d8e676f256/login_signup-ezgif.com-video-to-gif-converter.gif)
 
 <aside>
 
@@ -298,8 +300,6 @@
 
 에서 동일한 모달 창 `Fragment` 재사용
 
-![IMG_4021.GIF](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/7375b5d3-a9c0-405c-a494-950b080fdc3d/IMG_4021.gif)
-
 ---
 
 # Tab 3
@@ -372,7 +372,7 @@
 |:---:|:---:|
 | <img src="https://github.com/Ea3124.png" width="120"> | <img src="https://github.com/ss-leg-al.png" width="120"> |
 |[이승재](https://github.com/Ea3124)|[이현서](https://github.com/ss-leg-al)|
-|leesj6717@gmail.com| - |
+|leesj6717@gmail.com| hyunseo4242@gmail.com |
 
 # Tech Stack
 
