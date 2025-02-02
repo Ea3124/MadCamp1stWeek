@@ -11,22 +11,11 @@
 
 ---
 
-### 이승재
-
-- 부산대학교 정보컴퓨터공학부
-- leesj6717@gmail.com
-- Github [@](https://github.com/callasio)Ea3124
-
-[Ea3124 - Overview](https://github.com/Ea3124)
-
-### 이현서
-
-- 고려대학교 컴퓨터학과
-- hyunseo4242@gmail.com
-- Github [@](https://github.com/Jeeyoon038)ss-leg-al
-
-[ss-leg-al - Overview](https://github.com/ss-leg-al)
-
+|Tab 1,3 & UI|Tab2 & UI|
+|:---:|:---:|
+| <img src="https://github.com/Ea3124.png" width="120"> | <img src="https://github.com/ss-leg-al.png" width="120"> |
+|[이승재](https://github.com/Ea3124)|[이현서](https://github.com/ss-leg-al)|
+|leesj6717@gmail.com| hyunseo4242@gmail.com |
 
 ---
 
@@ -366,13 +355,6 @@
 
  이 프로젝트를 완성하게 해준 무료버전 챗지피티와 짝꿍형한테 무한한 감사의 말씀 올립니다.
 
-## Work
-
- |Tab 1,3 & UI|Tab2 & UI|
-|:---:|:---:|
-| <img src="https://github.com/Ea3124.png" width="120"> | <img src="https://github.com/ss-leg-al.png" width="120"> |
-|[이승재](https://github.com/Ea3124)|[이현서](https://github.com/ss-leg-al)|
-|leesj6717@gmail.com| hyunseo4242@gmail.com |
 
 # Tech Stack
 
