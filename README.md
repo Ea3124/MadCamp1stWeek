@@ -1,4 +1,5 @@
 # **SNIP**
+<img src="readme_images/map1.png" width="300">
 
 가까운 미용실을 손쉽게 찾고, 
 
@@ -26,13 +27,8 @@
 
 [ss-leg-al - Overview](https://github.com/ss-leg-al)
 
-![good.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/15981421-0d9b-410b-8f99-66632f176a67/good.gif)
 
 ---
-
-앱 아이콘 :
-
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/20356d62-6448-464d-bc26-98d3009b6166/image.png)
 
 # Introduction
 
@@ -51,6 +47,8 @@
 </aside>
 
 ### **처음 화면**
+
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/login_signup.gif)
 
 🔸 앱 실행시, 기본화면에 로그인 입력창 및 
 
@@ -104,6 +102,8 @@
 
 </aside>
 
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/first.gif)
+
 ### **관심사 설정**
 
 🔸 첫 로그인시, 초기 화면에 "00님, 반가워요”
@@ -136,6 +136,8 @@
 
 ---
 
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/first_second.gif)
+
 ### 결과 표시
 
 🔸 "결과보기" 클릭시 선택된 필터에 따라 결과를 
@@ -162,8 +164,6 @@
 
 업데이트
 
-![first_second-ezgif.com-video-to-gif-converter.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/5d26d287-b9bb-4b29-8c9d-351ff1d565ab/first_second-ezgif.com-video-to-gif-converter.gif)
-
 ---
 
 # TAB 1
@@ -173,6 +173,8 @@
 ### ✂️  미용실을 검색하고 관심 미용실을 등록해봐요
 
 </aside>
+
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/tab1.gif)
 
 ### 홈 화면
 
@@ -222,6 +224,8 @@
 
 </aside>
 
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/call.gif)
+
 ### 밀어서 전화하기
 
 🔸 사용자가 항목을 오른쪽으로 스와이프할 때  
@@ -251,6 +255,8 @@
 ### ✂️  SNIP 만의 생생한 리뷰를 확인하고 작성하세요!
 
 </aside>
+
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/tab2.gif)
 
 ### 리뷰 갤러리
 
@@ -304,6 +310,8 @@
 
 </aside>
 
+![login_signup-ezgif.com-video-to-gif-converter.gif](readme_images/tab3.gif)
+
 ### 관심목록
 
 🔸 앱의 즐겨찾기 화면에서 사용자가 즐겨찾는 미용
@@ -342,11 +350,7 @@
 
 자가 쉽게 식별할 수 있게 표시
 
-![tab3-ezgif.com-video-to-gif-converter.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/80cb7532-3626-496a-ba92-fe246e1199de/tab3-ezgif.com-video-to-gif-converter.gif)
-
 # 후기
-
-![good.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/373102be-c4d6-461f-9323-ec3d5e647717/good.gif)
 
 ### 이승재
 
@@ -356,13 +360,19 @@
 
 개발하면서 딸기시루가 너무 먹고싶었고, 다같이 먹으러 갔으면 좋겠습니다
 
-![good.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/373102be-c4d6-461f-9323-ec3d5e647717/good.gif)
-
 ### 이현서
 
  협업도 처음이고 앱개발도 처음이라 어려움을 조금 겪었던 것 같습니다. 그래도 첫날보다는 발전된 저의 챗지피티 검색 실력을 확인할 수 있었습니다.
 
  이 프로젝트를 완성하게 해준 무료버전 챗지피티와 짝꿍형한테 무한한 감사의 말씀 올립니다.
+
+## Work
+
+ |Tab 1,3 & UI|Tab2 & UI|
+|:---:|:---:|
+| <img src="https://github.com/Ea3124.png" width="120"> | <img src="https://github.com/ss-leg-al.png" width="120"> |
+|[이승재](https://github.com/Ea3124)|[이현서](https://github.com/ss-leg-al)|
+|leesj6717@gmail.com| - |
 
 # Tech Stack
 
