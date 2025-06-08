@@ -19,6 +19,14 @@
 
 ---
 
+# Quick Start
+
+```
+ File -> New -> Project from version Control.. 
+ 
+ Paste in URL : https://github.com/Ea3124/MadCamp1stWeek
+```
+
 # Design
 
 <img src="readme_images/1st_design.png">
